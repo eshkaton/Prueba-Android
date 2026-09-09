@@ -1,14 +1,19 @@
-<resources> <!-- Nombre de la aplicación --> <string name="app_name">Registro Multimedia</string>
-    <!-- Login --> <string name="login_title">Iniciar sesión</string>
+<resources> <!-- Nombre de la aplicación -->
+    <string name="app_name">Registro Multimedia</string>
+    <!-- Login -->
+    <string name="login_title">Iniciar sesión</string>
     <string name="login_subtitle">Accede a tu cuenta para continuar</string>
     <string name="login_email">Correo electrónico</string>
     <string name="login_password">Contraseña</string>
     <string name="login_button">Ingresar</string>
     <string name="login_forgot_password">¿Olvidaste tu contraseña?</string>
 
-    <!-- Información --> <string name="app_footer">© 2026 Registro Multimedia</string>
-    <!-- Opciones para el Spinner de carreras --> <string-array name="carreras_array">
-        <item>Seleccione carrera</item> <item>Ingeniería en Informática</item>
+    <!-- Información -->
+    <string name="app_footer">© 2026 Registro Multimedia</string>
+    <!-- Opciones para el Spinner de carreras -->
+    <string-array name="carreras_array">
+        <item>Seleccione carrera</item>
+        <item>Ingeniería en Informática</item>
         <item>Analista Programador</item>
         <item>CiberSeguridad</item>
         <item>Técnico en Informática</item>
