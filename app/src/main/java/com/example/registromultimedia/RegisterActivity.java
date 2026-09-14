@@ -1,6 +1,7 @@
 package com.example.registromultimedia;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,9 +21,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        //Codigo Implementado por Vicente López
 
-        // Conectar componentes con el XML
+        // Conectar componentes con el XML (Implementado por Vicente López)
         btnBack = findViewById(R.id.btnBack);
         txtBackToLogin = findViewById(R.id.txtBackToLogin);
         btnConfirmRegister = findViewById(R.id.btnConfirmRegister);
@@ -39,25 +39,47 @@ public class RegisterActivity extends AppCompatActivity {
         btnConfirmRegister.setOnClickListener(v -> registrarUsuario());
     }
 
-    private void registrarUsuario() {
+    // =========================================================================
+    // Desarrollado por: Seppel Krahl
+    // =========================================================================
+
+    /**
+     * saca el texto del correo y contraseña y verifica que no estén vacios
+     * muestra una alerta de error si falta algún campo
+     */
+    private boolean validarDatos() {
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
 
-        if (email.isEmpty()) {
-            editEmail.setError("Por favor ingrese su correo");
+        if (TextUtils.isEmpty(email)) {
+            editEmail.setError("por favor ingrese su correo");
+            Toast.makeText(this, "por favor ingrese su correo", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            editPassword.setError("por favor ingrese su contraseña");
+            Toast.makeText(this, "por favor ingrese su contraseña", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+    private void registrarUsuario() {
+        // validación de datos antes de hacer el registro
+        if (!validarDatos()) {
             return;
         }
 
-        if (password.isEmpty()) {
-            editPassword.setError("Por favor ingrese su contraseña");
-            return;
-        }
+        String email = editEmail.getText().toString().trim();
+        String password = editPassword.getText().toString().trim();
 
-        // Guardamos directamente en la ArrayList usando las variables ya creadas arriba
+        // guardamos en el arraylist (implementado por Vicente López)
         UserRepository.userList.add(new User(email, password));
 
-        Toast.makeText(this, "¡Cuenta creada con éxito!", Toast.LENGTH_SHORT).show();
-        finish(); // Cierra esta actividad y regresa al Login
+        Toast.makeText(this, "¡cuenta creada con exito!", Toast.LENGTH_SHORT).show();
+        finish(); // cierra la actividad y regresa al Login
     }
 }
-//Creado por Vicente López
+// Creado por Vicente López y Seppel Krahl
