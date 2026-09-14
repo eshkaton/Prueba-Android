@@ -336,6 +336,23 @@
             android:overScrollMode="never"
             app:layout_constraintTop_toBottomOf="@id/lblRecycler"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- ========================================================= -->
+        <!-- DISEÑO DEL BOTÓN AÑADIDO POR: seppel krahl -->
+        <!-- ========================================================= -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:padding="12dp"
+            android:text="Ir a Pantalla de Registro"
+            android:backgroundTint="#17365D"
+            android:textColor="#FFFFFF"
+            app:layout_constraintTop_toBottomOf="@id/recyclerEstudiantes"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
