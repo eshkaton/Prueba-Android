@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnMostrar, btnAumentar, btnGrabar, btnDetener, btnReproducir;
     RecyclerView recyclerEstudiantes;
 
-    ArrayList<Estudiante> listaEstudiantes;
-    EstudianteAdapter adapter;
+    ArrayList<Integrante> listaIntegrantes;
+    IntegranteAdapter adapter;
 
     int progreso = 30;
     private MediaRecorder mediaRecorder;
@@ -77,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
         btnGrabar = findViewById(R.id.btnGrabar);
         btnDetener = findViewById(R.id.btnDetener);
         btnReproducir = findViewById(R.id.btnReproducir);
-        recyclerEstudiantes = findViewById(R.id.recyclerEstudiantes);
+        recyclerEstudiantes = findViewById(R.id.recyclerIntegrantes);
+
+        cargarIntegrantes();
 
         // Configurar Spinner
         ArrayAdapter<CharSequence> adapterSpinner = ArrayAdapter.createFromResource(
@@ -105,9 +107,6 @@ public class MainActivity extends AppCompatActivity {
             progressBar.setProgress(progreso);
             txtProgreso.setText("Progreso: " + progreso + "%");
         });
-
-        // Configurar RecyclerView inicial
-        cargarEstudiantes();
 
         // Botón Registrar/Mostrar
         btnMostrar.setOnClickListener(view -> mostrarYAgregarDatos());
@@ -209,30 +208,24 @@ public class MainActivity extends AppCompatActivity {
 
         float calificacion = ratingBar.getRating();
 
-        String resultado = "Nombre: " + nombre +
-                "\nCarrera: " + carrera +
-                "\nJornada: " + jornada +
-                "\nTecnologías: " + tecnologias.toString() +
-                "\nCalificación: " + calificacion + " ★";
-        txtResultado.setText(resultado);
 
-        // Agregar al RecyclerView dinámicamente
-        Estudiante nuevoEstudiante = new Estudiante(nombre, carrera);
-        listaEstudiantes.add(nuevoEstudiante);
-        adapter.notifyItemInserted(listaEstudiantes.size() - 1);
-        recyclerEstudiantes.scrollToPosition(listaEstudiantes.size() - 1);
 
-        editNombre.setText("");
-        Toast.makeText(this, "¡Agregado al listado!", Toast.LENGTH_SHORT).show();
+        Integrante nuevoIntegrante = new Integrante(nombre, carrera, tecnologias.toString(), jornada, calificacion);
+
+
+        listaIntegrantes.add(nuevoIntegrante);
+        adapter.notifyDataSetChanged();
     }
 
-    private void cargarEstudiantes() {
-        listaEstudiantes = new ArrayList<>();
-        listaEstudiantes.add(new Estudiante("Juan Pérez", "Ingeniería en Informática"));
-        listaEstudiantes.add(new Estudiante("Ana González", "Analista Programador"));
+    private void cargarIntegrantes() {
+
+        listaIntegrantes = new ArrayList<>();
+        listaIntegrantes.add(new Integrante("Lucas Bilbao", "Ingenieria en Informatica", "java, Android", "Diurno", R.drawable.lucas, 5.0f));
+        listaIntegrantes.add(new Integrante("Bruno Antio", "Analista Programador", "Python, SQL", "Diurno", R.drawable.bruno, 3.0f));
+        listaIntegrantes.add(new Integrante("Anghel Lopez", "Diseñador", "Figma, UX", "Diurno", R.drawable.anghel, 4.0f));
 
         recyclerEstudiantes.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new EstudianteAdapter(listaEstudiantes);
+        adapter = new IntegranteAdapter(listaIntegrantes);
         recyclerEstudiantes.setAdapter(adapter);
     }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Permiso obligatorio para el micrófono -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
@@ -13,22 +14,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Registromultimedia">
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
+
         <!-- LoginActivity es la primera pantalla que se abre -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- MainActivity se abre después de iniciar sesión correctamente -->
+        </activity>
+
+        <!-- MainActivity se abre después de iniciar sesión correctamente -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <activity 
+            android:name=".DetalleIntegranteActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
