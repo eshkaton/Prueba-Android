@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Conectar componentes con el XML (Implementado por Vicente López)
+        // Conectar componentes con el XML (Implementado por Ricardo Moreno)
         btnBack = findViewById(R.id.btnBack);
         txtBackToLogin = findViewById(R.id.txtBackToLogin);
         btnConfirmRegister = findViewById(R.id.btnConfirmRegister);
@@ -75,11 +75,11 @@ public class RegisterActivity extends AppCompatActivity {
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
 
-        // guardamos en el arraylist (implementado por Vicente López)
+        // guardamos en el arraylist (implementado por Ricardo Moreno)
         UserRepository.userList.add(new User(email, password));
 
         Toast.makeText(this, "¡cuenta creada con exito!", Toast.LENGTH_SHORT).show();
         finish(); // cierra la actividad y regresa al Login
     }
 }
-// Creado por Vicente López y Seppel Krahl
+// Creado por Ricardo Moreno y Seppel Krahl
