@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.content.Intent;
 import android.os.Environment;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -109,6 +110,19 @@ public class MainActivity extends AppCompatActivity {
 
         // Botón Registrar/Mostrar
         btnMostrar.setOnClickListener(view -> mostrarYAgregarDatos());
+
+        // =========================================================================
+        // codigo añadido por: Seppel Krahl
+        // tarea: conexión con intent hacia la pantalla de registro
+        // =========================================================================
+        Button btnIrRegistro = findViewById(R.id.btnRegister); // Verifica que el ID sea correcto según tu XML
+        if (btnIrRegistro != null) {
+            btnIrRegistro.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            });
+        }
+        // =========================================================================
     }
 
     private void iniciarGrabacion() {
