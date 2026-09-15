@@ -30,6 +30,8 @@
             android:name=".MainActivity"
             android:exported="false" />
 
+        <activity android:name=".DetalleIntegranteActivity" />
+
     </application>
 
 </manifest>
