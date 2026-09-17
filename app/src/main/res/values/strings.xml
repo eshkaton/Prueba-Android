@@ -8,6 +8,41 @@
     <string name="login_button">Ingresar</string>
     <string name="login_forgot_password">¿Olvidaste tu contraseña?</string>
 
+    <!-- Inicio strings Grupo 6-->
+    <string name="volver_grabacion">Volver a grabación</string>
+    <string name="reproduccion_audio">Reproducción de Audio</string>
+    <string name="sin_audios_guardados">Aún no tienes grabaciones guardadas.\nVe a Grabación para crear la primera.</string>
+    <string name="selecciona_audio">Selecciona un audio para reproducir</string>
+    <string name="tiempo_audio_inicial">00:00 / 00:00</string>
+    <string name="cortar_audio">Cortar audio</string>
+    <string name="cortar">Cortar</string>
+    <string name="reproducir_pausar">Reproducir o pausar</string>
+    <string name="reproducir">Reproducir</string>
+    <string name="eliminar_audio">Eliminar audio</string>
+    <string name="eliminar">Eliminar</string>
+
+    <string name="inicio_audio">Inicio: 00:00</string>
+    <string name="fin_audio">Fin: 00:00</string>
+
+    <string name="volver">Volver</string>
+    <string name="grabacion_audio">Grabación de Audio</string>
+    <string name="estado_grabacion">Estado de grabación</string>
+    <string name="listo_para_grabar">Listo para grabar</string>
+    <string name="toca_boton_comenzar">Toca el botón para comenzar</string>
+    <string name="grabar_audio">Grabar audio</string>
+    <string name="grabar">Grabar</string>
+    <string name="detener_grabacion">Detener grabación</string>
+    <string name="detener">Detener</string>
+    <string name="guardar_grabacion">Guardar grabación</string>
+    <string name="guardar">Guardar</string>
+    <string name="ultima_grabacion">Última grabación</string>
+    <string name="reproducir_audio">Reproducir audio</string>
+
+    <string name="audio">Audio</string>
+    <string name="grabacion">Grabación</string>
+    <string name="tiempo_cero">00:00</string>
+    <!-- Final strings Grupo 6-->
+
     <!-- Información -->
     <string name="app_footer">© 2026 Registro Multimedia</string>
     <!-- Opciones para el Spinner de carreras -->

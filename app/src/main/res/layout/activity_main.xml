@@ -351,7 +351,7 @@
             android:text="Ir a Pantalla de Registro"
             android:backgroundTint="#17365D"
             android:textColor="#FFFFFF"
-            app:layout_constraintTop_toBottomOf="@id/recyclerEstudiantes"
+            app:layout_constraintTop_toBottomOf="@id/recyclerIntegrantes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />

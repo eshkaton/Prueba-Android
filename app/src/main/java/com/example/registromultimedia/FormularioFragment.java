@@ -24,8 +24,8 @@ public class FormularioFragment extends Fragment {
     private RadioGroup rgGenero;
     private Button btnAgregar;
 
-    // Inicializa la vista y enlazalos componentes
-    // Metodo hecho por Rodrigo Toledou
+    // Inicializa la vista y enlaza los componentes
+    // Metodo hecho por Rodrigo Toledo
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_formulario, container, false);
@@ -48,8 +48,8 @@ public class FormularioFragment extends Fragment {
         return view;
     }
 
-    // PObla la lista de opciones para los cargos
-    // cReado por Fernando Zamorano
+    // Pobla la lista de opciones para los cargos
+    // Creado por Fernando Zamorano
     private void configurarRoles() {
         String[] roles = {"Desarrollador", "Diseñador", "Analista", "Tester"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, roles);
@@ -57,7 +57,7 @@ public class FormularioFragment extends Fragment {
     }
 
     // Recopila datos y genera la nueva entidad en el sistema
-    // Validaciones y captura de datos hechas por Rodrigo Toledou
+    // Validaciones y captura de datos hechas por Rodrigo Toledo
     private void configurarAccionAgregar() {
         btnAgregar.setOnClickListener(v -> {
             String nombre = etNombre.getText().toString();
@@ -85,9 +85,14 @@ public class FormularioFragment extends Fragment {
                 genero = "Otro";
             }
 
-            // Genera el estudiante utilizand el modelo del otro grupo
-            // Hecho por Fernando Zamorano
-            Estudiante nuevoEstudiante = new Estudiante(nombre, rol);
+            // Genera el integrante utilizando todos los datos capturados y el constructor de 5 parámetros
+            Integrante nuevoIntegrante = new Integrante(
+                    nombre,
+                    rol,
+                    tecnologias.toString(),
+                    genero,
+                    3.0f   // Valoración por defecto
+            );
 
             etNombre.setText("");
             cbJava.setChecked(false);
