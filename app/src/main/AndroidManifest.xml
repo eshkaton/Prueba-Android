@@ -15,6 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Registromultimedia">
 
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+
         <!-- LoginActivity es la primera pantalla que se abre -->
         <activity
             android:name=".LoginActivity"
@@ -28,6 +32,10 @@
         <!-- MainActivity se abre después de iniciar sesión correctamente -->
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+
+        <activity 
+            android:name=".DetalleIntegranteActivity"
             android:exported="false" />
 
     </application>
