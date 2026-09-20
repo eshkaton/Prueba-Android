@@ -1,264 +1,354 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
-    android:fillViewport="true"
     tools:context=".MainActivity">
 
+    <!-- CONTENIDO PRINCIPAL -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:ignore="HardcodedText,ContentDescription,Autofill">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <!-- ================= HEADER ================= -->
-        <LinearLayout
+        <!-- TOOLBAR -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="24dp"
-            android:background="#17365D">
+            android:layout_height="?attr/actionBarSize"
+            android:background="#17365D"
+            app:title="Registro Multimedia"
+            app:titleTextColor="#FFFFFF" />
 
-            <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:src="@mipmap/ic_launcher" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Registro Multimedia"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Registro de integrantes"
-                android:textColor="#D9E5F2"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <!-- CONTENIDO SCROLLABLE -->
+        <ScrollView
+            android:id="@+id/main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#F5F7FA"
+            android:fillViewport="true">
 
-            <!-- ================= FORMULARIO — Grupo 3 (fragment_formulario.xml) ================= -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Datos del integrante"
-                android:textColor="#17365D"
-                android:textSize="19sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/iv_avatar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="12dp"
-                android:src="@drawable/bg_gradient_urban"
-                app:tint="#4285F4" />
-
-            <EditText
-                android:id="@+id/et_nombre"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:background="#FFFFFF"
-                android:hint="Nombre del integrante"
-                android:inputType="textPersonName"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Rol"
-                android:textColor="#17365D"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/sp_rol"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#FFFFFF" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Tecnologías"
-                android:textColor="#17365D"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <GridLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="2">
-                <CheckBox android:id="@+id/cb_java" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Java" />
-                <CheckBox android:id="@+id/cb_android" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Android" />
-                <CheckBox android:id="@+id/cb_web" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Web" />
-                <CheckBox android:id="@+id/cb_ia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IA" />
-                <CheckBox android:id="@+id/cb_diseno" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Diseño" />
-                <CheckBox android:id="@+id/cb_otros" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Otros" />
-            </GridLayout>
+                android:orientation="vertical"
+                tools:ignore="HardcodedText,ContentDescription,Autofill">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Género"
-                android:textColor="#17365D"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                <!-- ================= HEADER ================= -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="24dp"
+                    android:background="#17365D">
 
-            <RadioGroup
-                android:id="@+id/rg_genero"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/rb_masculino" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Masculino" />
-                <RadioButton android:id="@+id/rb_femenino" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="Femenino" />
-                <RadioButton android:id="@+id/rb_otro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="Otro" />
-            </RadioGroup>
+                    <ImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@mipmap/ic_launcher" />
 
-            <!-- ================= PROGRESO Y VALORACIÓN — Grupo 4 (fragment_progreso.xml) ================= -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:text="Progreso y valoración"
-                android:textColor="#17365D"
-                android:textSize="19sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Registro Multimedia"
+                        android:textColor="#FFFFFF"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Nivel de experiencia"
-                android:textColor="#17365D"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Registro de integrantes"
+                        android:textColor="#D9E5F2"
+                        android:textSize="14sp" />
 
-            <Spinner
-                android:id="@+id/sp_nivel"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#FFFFFF" />
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Valoración"
-                android:textColor="#17365D"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                <!-- CONTENIDO DEL FORMULARIO -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-            <RatingBar
-                android:id="@+id/rb_valoracion"
-                style="?android:attr/ratingBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:stepSize="1" />
+                    <!-- ================= FORMULARIO — Grupo 3 ================= -->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Comentarios"
-                android:textColor="#17365D"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Datos del integrante"
+                        android:textColor="#17365D"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/et_comentarios"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_marginTop="6dp"
-                android:background="#FFFFFF"
-                android:gravity="top|start"
-                android:hint="Escribe un comentario sobre el integrante"
-                android:inputType="textMultiLine"
-                android:padding="12dp" />
+                    <ImageView
+                        android:id="@+id/iv_avatar"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/bg_gradient_urban"
+                        app:tint="#4285F4" />
 
-            <TextView
-                android:id="@+id/tv_progreso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Progreso: 0%"
-                android:textColor="#555555"
-                android:textSize="14sp" />
+                    <EditText
+                        android:id="@+id/et_nombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#FFFFFF"
+                        android:hint="Nombre del integrante"
+                        android:inputType="textPersonName"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp" />
 
-            <ProgressBar
-                android:id="@+id/pb_progreso"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_marginTop="6dp"
-                android:max="100"
-                android:progress="0" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Rol"
+                        android:textColor="#17365D"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btn_agregar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#17365D"
-                android:text="Agregar integrante"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
+                    <Spinner
+                        android:id="@+id/sp_rol"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="#FFFFFF" />
 
-            <!-- ================= LISTADO — Grupo 5 (item_integrante.xml + IntegranteAdapter) ================= -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:text="Listado de integrantes"
-                android:textColor="#17365D"
-                android:textSize="19sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Tecnologías"
+                        android:textColor="#17365D"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerIntegrantes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:nestedScrollingEnabled="false"
-                android:overScrollMode="never" />
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2">
 
-            <!-- ========================================================= -->
-            <!-- DISEÑO DEL BOTÓN AÑADIDO POR: seppel krahl -->
-            <!-- ========================================================= -->
-            <Button
-                android:id="@+id/btnRegister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="20dp"
-                android:padding="12dp"
-                android:text="Ir a Pantalla de Registro"
-                android:backgroundTint="#17365D"
-                android:textColor="#FFFFFF" />
+                        <CheckBox
+                            android:id="@+id/cb_java"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Java" />
 
-        </LinearLayout>
+                        <CheckBox
+                            android:id="@+id/cb_android"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Android" />
+
+                        <CheckBox
+                            android:id="@+id/cb_web"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Web" />
+
+                        <CheckBox
+                            android:id="@+id/cb_ia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="IA" />
+
+                        <CheckBox
+                            android:id="@+id/cb_diseno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Diseño" />
+
+                        <CheckBox
+                            android:id="@+id/cb_otros"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Otros" />
+
+                    </GridLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Género"
+                        android:textColor="#17365D"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_genero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_masculino"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Masculino" />
+
+                        <RadioButton
+                            android:id="@+id/rb_femenino"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="Femenino" />
+
+                        <RadioButton
+                            android:id="@+id/rb_otro"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="Otro" />
+
+                    </RadioGroup>
+
+                    <!-- ================= PROGRESO Y VALORACIÓN ================= -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:text="Progreso y valoración"
+                        android:textColor="#17365D"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Nivel de experiencia"
+                        android:textColor="#17365D"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/sp_nivel"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Valoración"
+                        android:textColor="#17365D"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <RatingBar
+                        android:id="@+id/rb_valoracion"
+                        style="?android:attr/ratingBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:stepSize="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Comentarios"
+                        android:textColor="#17365D"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/et_comentarios"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:layout_marginTop="6dp"
+                        android:background="#FFFFFF"
+                        android:gravity="top|start"
+                        android:hint="Escribe un comentario sobre el integrante"
+                        android:inputType="textMultiLine"
+                        android:padding="12dp" />
+
+                    <TextView
+                        android:id="@+id/tv_progreso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Progreso: 0%"
+                        android:textColor="#555555"
+                        android:textSize="14sp" />
+
+                    <ProgressBar
+                        android:id="@+id/pb_progreso"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginTop="6dp"
+                        android:max="100"
+                        android:progress="0" />
+
+                    <Button
+                        android:id="@+id/btn_agregar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="#17365D"
+                        android:text="Agregar integrante"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF" />
+
+                    <!-- ================= LISTADO ================= -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:text="Listado de integrantes"
+                        android:textColor="#17365D"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerIntegrantes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never" />
+
+                    <Button
+                        android:id="@+id/btnRegister"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:padding="12dp"
+                        android:text="Ir a Pantalla de Registro"
+                        android:backgroundTint="#17365D"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
     </LinearLayout>
-</ScrollView>
+
+    <!-- MENÚ LATERAL -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#FFFFFF"
+        app:menu="@menu/drawer_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

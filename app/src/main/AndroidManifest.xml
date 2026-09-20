@@ -33,7 +33,15 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <!-- Pantalla para grabar audio -->
+        <activity
+            android:name=".activity_grabacion_audio"
+            android:exported="false" />
 
+        <!-- Pantalla para reproducir audio -->
+        <activity
+            android:name=".activity_reproductor_audio"
+            android:exported="false" />
         <activity 
             android:name=".DetalleIntegranteActivity"
             android:exported="false" />
