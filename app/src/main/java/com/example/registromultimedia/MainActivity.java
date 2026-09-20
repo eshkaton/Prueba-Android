@@ -1,242 +1,200 @@
 package com.example.registromultimedia;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.media.MediaPlayer;
-import android.media.MediaRecorder;
-import android.os.Bundle;
 import android.content.Intent;
-import android.os.Environment;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
-    private boolean permissionToRecordAccepted = false;
-    private String[] permissions = {Manifest.permission.RECORD_AUDIO};
+    // Formulario - Grupo 3
+    EditText etNombre;
+    Spinner spRol;
+    CheckBox cbJava, cbAndroid, cbWeb, cbIa, cbDiseno, cbOtros;
+    RadioGroup rgGenero;
 
-    CheckBox checkJava, checkPython, checkAndroid;
-    RadioGroup grupoJornada;
-    Spinner spinnerCarreras;
-    RatingBar ratingBar;
-    ProgressBar progressBar;
-    TextView txtProgreso, txtResultado;
-    EditText editNombre;
-    Button btnMostrar, btnAumentar, btnGrabar, btnDetener, btnReproducir;
-    RecyclerView recyclerEstudiantes;
+    // Progreso y valoración - Grupo 4
+    Spinner spNivel;
+    RatingBar rbValoracion;
+    EditText etComentarios;
+    TextView tvProgreso;
+    ProgressBar pbProgreso;
+
+    Button btnAgregar, btnRegister;
+    RecyclerView recyclerIntegrantes;
 
     ArrayList<Integrante> listaIntegrantes;
     IntegranteAdapter adapter;
 
-    int progreso = 30;
-    private MediaRecorder mediaRecorder;
-    private MediaPlayer mediaPlayer;
-    private String rutaAudio = "";
+    private boolean nivelSeleccionado = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Solicitar permisos de audio en tiempo de ejecución
-        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+        etNombre = findViewById(R.id.et_nombre);
+        spRol = findViewById(R.id.sp_rol);
+        cbJava = findViewById(R.id.cb_java);
+        cbAndroid = findViewById(R.id.cb_android);
+        cbWeb = findViewById(R.id.cb_web);
+        cbIa = findViewById(R.id.cb_ia);
+        cbDiseno = findViewById(R.id.cb_diseno);
+        cbOtros = findViewById(R.id.cb_otros);
+        rgGenero = findViewById(R.id.rg_genero);
 
-        // Conectar componentes
-        checkJava = findViewById(R.id.checkJava);
-        checkPython = findViewById(R.id.checkPython);
-        checkAndroid = findViewById(R.id.checkAndroid);
-        grupoJornada = findViewById(R.id.grupoJornada);
-        spinnerCarreras = findViewById(R.id.spinnerCarreras);
-        ratingBar = findViewById(R.id.ratingBar);
-        progressBar = findViewById(R.id.progressBar);
-        txtProgreso = findViewById(R.id.txtProgreso);
-        txtResultado = findViewById(R.id.txtResultado);
-        editNombre = findViewById(R.id.editNombre);
-        btnMostrar = findViewById(R.id.btnMostrar);
-        btnAumentar = findViewById(R.id.btnAumentar);
-        btnGrabar = findViewById(R.id.btnGrabar);
-        btnDetener = findViewById(R.id.btnDetener);
-        btnReproducir = findViewById(R.id.btnReproducir);
-        recyclerEstudiantes = findViewById(R.id.recyclerIntegrantes);
+        spNivel = findViewById(R.id.sp_nivel);
+        rbValoracion = findViewById(R.id.rb_valoracion);
+        etComentarios = findViewById(R.id.et_comentarios);
+        tvProgreso = findViewById(R.id.tv_progreso);
+        pbProgreso = findViewById(R.id.pb_progreso);
+
+        btnAgregar = findViewById(R.id.btn_agregar);
+        btnRegister = findViewById(R.id.btnRegister);
+        recyclerIntegrantes = findViewById(R.id.recyclerIntegrantes);
 
         cargarIntegrantes();
+        configurarRoles();
+        configurarNiveles();
+        configurarListeners();
+    }
 
-        // Configurar Spinner
-        ArrayAdapter<CharSequence> adapterSpinner = ArrayAdapter.createFromResource(
-                this,
-                R.array.carreras_array,
-                android.R.layout.simple_spinner_item
-        );
-        adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCarreras.setAdapter(adapterSpinner);
+    private void configurarRoles() {
+        String[] roles = {"Desarrollador", "Diseñador", "Analista", "Tester"};
+        ArrayAdapter<String> adapterRoles = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, roles);
+        spRol.setAdapter(adapterRoles);
+    }
 
-        // Configurar ruta del archivo de audio (.m4a AAC)
-        File directorio = getExternalFilesDir(Environment.DIRECTORY_MUSIC);
-        File archivo = new File(directorio, "presentacion_equipo.m4a");
-        rutaAudio = archivo.getAbsolutePath();
+    private void configurarNiveles() {
+        String[] niveles = {"Principiante", "Intermedio", "Avanzado", "Experto"};
+        ArrayAdapter<String> adapterNiveles = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, niveles);
+        spNivel.setAdapter(adapterNiveles);
 
-        // Listeners de Audio
-        btnGrabar.setOnClickListener(v -> iniciarGrabacion());
-        btnDetener.setOnClickListener(v -> detenerGrabacion());
-        btnReproducir.setOnClickListener(v -> reproducirAudio());
+        spNivel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                nivelSeleccionado = true;
+                actualizarProgreso();
+            }
 
-        // Botón ProgressBar
-        btnAumentar.setOnClickListener(view -> {
-            progreso += 10;
-            if (progreso > 100) progreso = 0;
-            progressBar.setProgress(progreso);
-            txtProgreso.setText("Progreso: " + progreso + "%");
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                nivelSeleccionado = false;
+                actualizarProgreso();
+            }
+        });
+    }
+
+    private void configurarListeners() {
+        rbValoracion.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> actualizarProgreso());
+
+        etComentarios.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                actualizarProgreso();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
 
-        // Botón Registrar/Mostrar
-        btnMostrar.setOnClickListener(view -> mostrarYAgregarDatos());
+        btnAgregar.setOnClickListener(v -> agregarIntegrante());
 
-        // =========================================================================
-        // codigo añadido por: Seppel Krahl
-        // tarea: conexión con intent hacia la pantalla de registro
-        // =========================================================================
-        Button btnIrRegistro = findViewById(R.id.btnRegister); // Verifica que el ID sea correcto según tu XML
-        if (btnIrRegistro != null) {
-            btnIrRegistro.setOnClickListener(v -> {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            });
-        }
-        // =========================================================================
-    }
-
-    private void iniciarGrabacion() {
-        if (!permissionToRecordAccepted) {
-            Toast.makeText(this, "Permiso de micrófono denegado", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        mediaRecorder = new MediaRecorder();
-        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
-        mediaRecorder.setOutputFile(rutaAudio);
-
-        try {
-            mediaRecorder.prepare();
-            mediaRecorder.start();
-            Toast.makeText(this, "Grabando audio...", Toast.LENGTH_SHORT).show();
-            btnGrabar.setEnabled(false);
-            btnDetener.setEnabled(true);
-            btnReproducir.setEnabled(false);
-        } catch (IOException e) {
-            Toast.makeText(this, "Error al grabar: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        if (btnRegister != null) {
+            btnRegister.setOnClickListener(v ->
+                    startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
         }
     }
 
-    private void detenerGrabacion() {
-        if (mediaRecorder != null) {
-            try {
-                mediaRecorder.stop();
-                mediaRecorder.release();
-                mediaRecorder = null;
-                Toast.makeText(this, "Audio guardado correctamente", Toast.LENGTH_SHORT).show();
-                btnGrabar.setEnabled(true);
-                btnDetener.setEnabled(false);
-                btnReproducir.setEnabled(true);
-            } catch (Exception e) {
-                Toast.makeText(this, "Error al detener", Toast.LENGTH_SHORT).show();
-            }
-        }
+    private void actualizarProgreso() {
+        int camposCompletados = 0;
+        int totalCampos = 3;
+
+        if (nivelSeleccionado) camposCompletados++;
+        if (rbValoracion.getRating() > 0) camposCompletados++;
+        if (!etComentarios.getText().toString().trim().isEmpty()) camposCompletados++;
+
+        int porcentaje = (camposCompletados * 100) / totalCampos;
+        pbProgreso.setProgress(porcentaje);
+        tvProgreso.setText("Progreso: " + porcentaje + "%");
     }
 
-    private void reproducirAudio() {
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
-        }
-        mediaPlayer = new MediaPlayer();
-        try {
-            mediaPlayer.setDataSource(rutaAudio);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-            Toast.makeText(this, "Reproduciendo audio...", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Toast.makeText(this, "No hay audio grabado para reproducir", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void mostrarYAgregarDatos() {
-        String nombre = editNombre.getText().toString().trim();
+    private void agregarIntegrante() {
+        String nombre = etNombre.getText().toString().trim();
         if (nombre.isEmpty()) {
-            editNombre.setError("Debe ingresar un nombre");
+            etNombre.setError("Debe ingresar un nombre");
             return;
         }
 
-        String carrera = spinnerCarreras.getSelectedItem().toString();
-        if (carrera.equals("Seleccione carrera")) {
-            Toast.makeText(this, "Seleccione una carrera válida", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String jornada = "No seleccionada";
-        int radioSeleccionado = grupoJornada.getCheckedRadioButtonId();
-        if (radioSeleccionado != -1) {
-            RadioButton rb = findViewById(radioSeleccionado);
-            jornada = rb.getText().toString();
-        }
+        String rol = spRol.getSelectedItem() != null ? spRol.getSelectedItem().toString() : "";
 
         StringBuilder tecnologias = new StringBuilder();
-        if (checkJava.isChecked()) tecnologias.append("Java ");
-        if (checkPython.isChecked()) tecnologias.append("Python ");
-        if (checkAndroid.isChecked()) tecnologias.append("Android ");
+        if (cbJava.isChecked()) tecnologias.append("Java ");
+        if (cbAndroid.isChecked()) tecnologias.append("Android ");
+        if (cbWeb.isChecked()) tecnologias.append("Web ");
+        if (cbIa.isChecked()) tecnologias.append("IA ");
+        if (cbDiseno.isChecked()) tecnologias.append("Diseño ");
+        if (cbOtros.isChecked()) tecnologias.append("Otros ");
         if (tecnologias.length() == 0) tecnologias.append("Ninguna");
 
-        float calificacion = ratingBar.getRating();
+        String genero = "No especificado";
+        int seleccionado = rgGenero.getCheckedRadioButtonId();
+        if (seleccionado == R.id.rb_masculino) genero = "Masculino";
+        else if (seleccionado == R.id.rb_femenino) genero = "Femenino";
+        else if (seleccionado == R.id.rb_otro) genero = "Otro";
 
+        float valoracion = rbValoracion.getRating();
 
-
-        Integrante nuevoIntegrante = new Integrante(nombre, carrera, tecnologias.toString(), jornada, calificacion);
-
-
+        Integrante nuevoIntegrante = new Integrante(nombre, rol, tecnologias.toString(), genero, valoracion);
         listaIntegrantes.add(nuevoIntegrante);
         adapter.notifyDataSetChanged();
+
+        Toast.makeText(this, "Integrante agregado", Toast.LENGTH_SHORT).show();
+
+        etNombre.setText("");
+        cbJava.setChecked(false);
+        cbAndroid.setChecked(false);
+        cbWeb.setChecked(false);
+        cbIa.setChecked(false);
+        cbDiseno.setChecked(false);
+        cbOtros.setChecked(false);
+        rgGenero.clearCheck();
+        etComentarios.setText("");
+        rbValoracion.setRating(0);
+        spNivel.setSelection(0);
+        nivelSeleccionado = false;
+        actualizarProgreso();
     }
 
     private void cargarIntegrantes() {
-
         listaIntegrantes = new ArrayList<>();
-        listaIntegrantes.add(new Integrante("Lucas Bilbao", "Ingenieria en Informatica", "java, Android", "Diurno", R.drawable.lucas, 5.0f));
-        listaIntegrantes.add(new Integrante("Bruno Antio", "Analista Programador", "Python, SQL", "Diurno", R.drawable.bruno, 3.0f));
-        listaIntegrantes.add(new Integrante("Anghel Lopez", "Diseñador", "Figma, UX", "Diurno", R.drawable.anghel, 4.0f));
+        listaIntegrantes.add(new Integrante("Lucas Bilbao", "Desarrollador", "Java, Android", "No especificado", R.drawable.lucas, 5.0f));
+        listaIntegrantes.add(new Integrante("Bruno Antio", "Analista", "Python, SQL", "No especificado", R.drawable.bruno, 3.0f));
+        listaIntegrantes.add(new Integrante("Anghel Lopez", "Diseñador", "Figma, UX", "No especificado", R.drawable.anghel, 4.0f));
 
-        recyclerEstudiantes.setLayoutManager(new LinearLayoutManager(this));
+        recyclerIntegrantes.setLayoutManager(new LinearLayoutManager(this));
         adapter = new IntegranteAdapter(listaIntegrantes);
-        recyclerEstudiantes.setAdapter(adapter);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_RECORD_AUDIO_PERMISSION) {
-            permissionToRecordAccepted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
-        }
-        if (!permissionToRecordAccepted) {
-            Toast.makeText(this, "Se requiere permiso de micrófono obligatoriamente", Toast.LENGTH_LONG).show();
-        }
+        recyclerIntegrantes.setAdapter(adapter);
     }
 }
