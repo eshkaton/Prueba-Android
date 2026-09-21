@@ -17,13 +17,24 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Menú lateral - Grupo 7 punto 2
+    DrawerLayout drawerLayout;
+    NavigationView navView;
+    Toolbar toolbar;
 
     // Formulario - Grupo 3
     EditText etNombre;
@@ -51,6 +62,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Menú lateral
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navView = findViewById(R.id.nav_view);
+        toolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Registro Multimedia");
+        }
+
         etNombre = findViewById(R.id.et_nombre);
         spRol = findViewById(R.id.sp_rol);
         cbJava = findViewById(R.id.cb_java);
@@ -75,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         configurarRoles();
         configurarNiveles();
         configurarListeners();
+        configurarMenuLateral();
     }
 
     private void configurarRoles() {
@@ -196,5 +219,45 @@ public class MainActivity extends AppCompatActivity {
         recyclerIntegrantes.setLayoutManager(new LinearLayoutManager(this));
         adapter = new IntegranteAdapter(listaIntegrantes);
         recyclerIntegrantes.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout != null && drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void configurarMenuLateral() {
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.abrir_menu,
+                R.string.cerrar_menu
+        );
+
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.menu_formulario) {
+                // Ya estamos en esta pantalla
+            } else if (id == R.id.menu_grabar_audio) {
+                startActivity(new Intent(MainActivity.this, activity_grabacion_audio.class));
+            } else if (id == R.id.menu_reproducir_audio) {
+                startActivity(new Intent(MainActivity.this, activity_reproductor_audio.class));
+            } else if (id == R.id.menu_cerrar_sesion) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+            }
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+        });
     }
 }
