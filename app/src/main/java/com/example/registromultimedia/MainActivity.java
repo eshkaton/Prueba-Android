@@ -16,10 +16,10 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -223,19 +223,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-
+        if (drawerLayout != null && drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-
         } else {
-
             super.onBackPressed();
         }
     }
 
     private void configurarMenuLateral() {
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
@@ -248,40 +243,20 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         navView.setNavigationItemSelectedListener(item -> {
-
             int id = item.getItemId();
 
             if (id == R.id.menu_formulario) {
-
-                // Ya estamos en esta pantalla.
-                // Solo se cierra el menú.
-
+                // Ya estamos en esta pantalla
             } else if (id == R.id.menu_grabar_audio) {
-
-                startActivity(new Intent(
-                        MainActivity.this,
-                        activity_grabacion_audio.class
-                ));
-
+                startActivity(new Intent(MainActivity.this, activity_grabacion_audio.class));
             } else if (id == R.id.menu_reproducir_audio) {
-
-                startActivity(new Intent(
-                        MainActivity.this,
-                        activity_reproductor_audio.class
-                ));
-
+                startActivity(new Intent(MainActivity.this, activity_reproductor_audio.class));
             } else if (id == R.id.menu_cerrar_sesion) {
-
-                startActivity(new Intent(
-                        MainActivity.this,
-                        LoginActivity.class
-                ));
-
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 finish();
             }
 
             drawerLayout.closeDrawer(GravityCompat.START);
-
             return true;
         });
     }
