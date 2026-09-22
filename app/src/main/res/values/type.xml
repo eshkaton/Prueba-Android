@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Familias tipográficas de la app en un solo lugar.
+
+    Se usan familias del sistema (Roboto y sus variantes), así que funcionan
+    sin conexión y en cualquier dispositivo. Si más adelante quieres una fuente
+    propia, copia el .ttf en res/font/ (por ejemplo res/font/poppins.ttf) y
+    cambia aquí el valor por @font/poppins: toda la app la adopta sin tocar
+    ningún layout.
+-->
+<resources>
+    <string name="fuente_display" translatable="false">sans-serif-black</string>
+    <string name="fuente_titulo" translatable="false">sans-serif-medium</string>
+    <string name="fuente_cuerpo" translatable="false">sans-serif</string>
+    <string name="fuente_mono" translatable="false">monospace</string>
+</resources>

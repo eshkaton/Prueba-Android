@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ===================== FORMAS ===================== -->
+
+    <style name="ShapeAppearance.App.Small" parent="ShapeAppearance.Material3.Corner.Small">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radio_s</item>
+    </style>
+
+    <style name="ShapeAppearance.App.Medium" parent="ShapeAppearance.Material3.Corner.Medium">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radio_m</item>
+    </style>
+
+    <style name="ShapeAppearance.App.Large" parent="ShapeAppearance.Material3.Corner.Large">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radio_l</item>
+    </style>
+
+    <style name="ShapeAppearance.App.Circular" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- ===================== TIPOGRAFÍA ===================== -->
+
+    <style name="TextAppearance.App.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="android:fontFamily">@string/fuente_display</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:lineSpacingMultiplier">1.08</item>
+    </style>
+
+    <style name="TextAppearance.App.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:fontFamily">@string/fuente_display</item>
+        <item name="android:textSize">27sp</item>
+        <item name="android:letterSpacing">-0.015</item>
+        <item name="android:lineSpacingMultiplier">1.12</item>
+    </style>
+
+    <style name="TextAppearance.App.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">@string/fuente_display</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="TextAppearance.App.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@string/fuente_titulo</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@string/fuente_titulo</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.005</item>
+    </style>
+
+    <style name="TextAppearance.App.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@string/fuente_cuerpo</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingMultiplier">1.25</item>
+    </style>
+
+    <style name="TextAppearance.App.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@string/fuente_cuerpo</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+    </style>
+
+    <style name="TextAppearance.App.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@string/fuente_titulo</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Etiqueta corta en versalitas: encabeza cada bloque del formulario. -->
+    <style name="TextAppearance.App.Overline" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:fontFamily">@string/fuente_titulo</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">0.14</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- Contadores de tiempo: cifras de ancho fijo para que no "bailen". -->
+    <style name="TextAppearance.App.Cronometro" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@string/fuente_mono</item>
+        <item name="android:letterSpacing">0.04</item>
+    </style>
+
+    <!-- ===================== TEXTO ===================== -->
+
+    <style name="Texto.Etiqueta" parent="Widget.AppCompat.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.App.Overline</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <!-- ===================== BOTONES ===================== -->
+
+    <style name="Widget.App.Button" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/alto_boton</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.LabelLarge</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="cornerRadius">@dimen/radio_l</item>
+        <item name="iconPadding">@dimen/esp_s</item>
+        <item name="iconSize">@dimen/icono_s</item>
+        <item name="rippleColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Widget.App.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/alto_boton</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.LabelLarge</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">@dimen/radio_l</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="iconPadding">@dimen/esp_s</item>
+        <item name="iconSize">@dimen/icono_s</item>
+    </style>
+
+    <style name="Widget.App.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textAppearance">@style/TextAppearance.App.LabelLarge</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Botón claro sobre el degradado de acceso. -->
+    <style name="Widget.App.Button.Acceso" parent="Widget.App.Button">
+        <item name="backgroundTint">@color/blanco</item>
+        <item name="android:textColor">@color/aurora_30</item>
+        <item name="rippleColor">@color/aurora_90</item>
+    </style>
+
+    <style name="Widget.App.Button.AccesoOutlined" parent="Widget.App.Button.Outlined">
+        <item name="android:textColor">@color/blanco</item>
+        <item name="strokeColor">@color/blanco_60</item>
+        <item name="rippleColor">@color/blanco_24</item>
+    </style>
+
+    <style name="Widget.App.Fab" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.Medium</item>
+    </style>
+
+    <!-- ===================== TARJETAS ===================== -->
+
+    <style name="Widget.App.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/radio_m</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="strokeColor">?attr/colorOutlineVariant</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="Widget.App.Card.Acento" parent="Widget.App.Card">
+        <item name="cardBackgroundColor">?attr/colorPrimaryContainer</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- ===================== CAMPOS ===================== -->
+
+    <style name="Widget.App.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/radio_s</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radio_s</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radio_s</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radio_s</item>
+        <item name="hintTextAppearance">@style/TextAppearance.App.BodyMedium</item>
+        <item name="errorTextAppearance">@style/TextAppearance.App.BodyMedium</item>
+    </style>
+
+    <!-- Campo claro sobre el degradado de acceso. -->
+    <style name="Widget.App.TextInputLayout.Acceso" parent="Widget.App.TextInputLayout">
+        <item name="boxStrokeColor">@color/selector_borde_acceso</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="hintTextColor">@color/blanco</item>
+        <item name="android:textColorHint">@color/blanco_60</item>
+        <item name="startIconTint">@color/blanco_60</item>
+        <item name="endIconTint">@color/blanco_60</item>
+        <item name="errorTextColor">@color/coral_70</item>
+        <item name="errorIconTint">@color/coral_70</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.CampoAcceso</item>
+    </style>
+
+    <style name="ThemeOverlay.App.CampoAcceso" parent="">
+        <item name="colorPrimary">@color/blanco</item>
+        <item name="colorOnSurface">@color/blanco</item>
+        <item name="colorOnSurfaceVariant">@color/blanco_60</item>
+        <item name="colorError">@color/coral_70</item>
+        <item name="editTextStyle">@style/Widget.App.EditText.Acceso</item>
+    </style>
+
+    <style name="Widget.App.EditText.Acceso" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/blanco</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.BodyLarge</item>
+        <item name="android:minHeight">@dimen/alto_campo</item>
+    </style>
+
+    <!-- ===================== SELECCIÓN ===================== -->
+
+    <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:textAppearance">@style/TextAppearance.App.BodyMedium</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:minHeight">44dp</item>
+    </style>
+
+    <style name="Widget.App.RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="android:textAppearance">@style/TextAppearance.App.BodyMedium</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:minHeight">44dp</item>
+    </style>
+
+    <!-- ===================== BARRAS ===================== -->
+
+    <style name="Widget.App.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="titleTextAppearance">@style/TextAppearance.App.TitleLarge</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.App.BodyMedium</item>
+        <item name="titleTextColor">?attr/colorOnSurface</item>
+        <item name="subtitleTextColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.App.Overline</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.App.Overline</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemIconSize">@dimen/icono_m</item>
+    </style>
+
+    <!-- ===================== DIÁLOGOS ===================== -->
+
+    <style name="ThemeOverlay.App.AlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="alertDialogStyle">@style/Widget.App.AlertDialog</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Texto.DialogoTitulo</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Button.Text</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.App.Button.Text</item>
+    </style>
+
+    <style name="Widget.App.AlertDialog" parent="MaterialAlertDialog.Material3">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.Medium</item>
+    </style>
+
+    <style name="Texto.DialogoTitulo" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textAppearance">@style/TextAppearance.App.TitleLarge</item>
+    </style>
+
+</resources>

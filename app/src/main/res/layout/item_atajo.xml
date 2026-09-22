@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Tarjeta de acceso rápido reutilizada cuatro veces en la bienvenida.
+    El icono, el título y el detalle los rellena InicioFragment.
+-->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:contentDescription="@string/desc_atajo"
+    android:focusable="true"
+    app:cardCornerRadius="@dimen/radio_m">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/esp_l">
+
+        <ImageView
+            android:id="@+id/imgAtajo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_circulo_suave"
+            android:contentDescription="@null"
+            android:padding="@dimen/esp_m"
+            app:tint="?attr/colorOnPrimaryContainer"
+            tools:src="@drawable/ic_equipo" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/esp_l"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtAtajoTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.App.TitleMedium"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="Ver el equipo" />
+
+            <TextView
+                android:id="@+id/txtAtajoDetalle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:text="Consulta la ficha de cada integrante" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/icono_m"
+            android:layout_height="@dimen/icono_m"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_flecha_derecha"
+            app:tint="?attr/colorOutline" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Barra de menú inferior de la pantalla de bienvenida. -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_inicio"
+        android:icon="@drawable/ic_inicio"
+        android:title="@string/nav_inicio" />
+
+    <item
+        android:id="@+id/nav_equipo"
+        android:icon="@drawable/ic_equipo"
+        android:title="@string/nav_equipo" />
+
+    <item
+        android:id="@+id/nav_agregar"
+        android:icon="@drawable/ic_agregar_persona"
+        android:title="@string/nav_agregar" />
+
+    <item
+        android:id="@+id/nav_progreso"
+        android:icon="@drawable/ic_progreso"
+        android:title="@string/nav_progreso" />
+
+</menu>

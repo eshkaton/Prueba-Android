@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Escala de espaciado en múltiplos de 4dp, usada en toda la app. -->
+<resources>
+    <dimen name="esp_xs">4dp</dimen>
+    <dimen name="esp_s">8dp</dimen>
+    <dimen name="esp_m">12dp</dimen>
+    <dimen name="esp_l">16dp</dimen>
+    <dimen name="esp_xl">24dp</dimen>
+    <dimen name="esp_xxl">32dp</dimen>
+    <dimen name="esp_xxxl">48dp</dimen>
+
+    <dimen name="radio_s">12dp</dimen>
+    <dimen name="radio_m">18dp</dimen>
+    <dimen name="radio_l">28dp</dimen>
+
+    <dimen name="alto_campo">56dp</dimen>
+    <dimen name="alto_boton">54dp</dimen>
+    <dimen name="icono_s">20dp</dimen>
+    <dimen name="icono_m">24dp</dimen>
+
+    <dimen name="avatar_lista">56dp</dimen>
+    <dimen name="avatar_detalle">128dp</dimen>
+
+    <dimen name="boton_circular">64dp</dimen>
+    <dimen name="boton_circular_grande">84dp</dimen>
+</resources>

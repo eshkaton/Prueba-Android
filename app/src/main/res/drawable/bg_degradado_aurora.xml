@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fondo de las pantallas de acceso: violeta profundo hacia turquesa. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="135"
+        android:startColor="@color/degradado_inicio"
+        android:centerColor="@color/degradado_centro"
+        android:endColor="@color/degradado_fin"
+        android:type="linear" />
+</shape>

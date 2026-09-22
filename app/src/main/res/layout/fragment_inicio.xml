@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contenido de la pestaña «Inicio»: saludo, resumen y accesos rápidos. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:paddingBottom="@dimen/esp_xl"
+    android:scrollbars="none"
+    tools:context=".InicioFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/esp_l"
+        android:paddingTop="@dimen/esp_l"
+        android:paddingEnd="@dimen/esp_l">
+
+        <!-- ============ TARJETA DE BIENVENIDA ============ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_hero_aurora"
+            android:orientation="vertical"
+            android:padding="@dimen/esp_xl">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bienvenida_saludo"
+                android:textAppearance="@style/TextAppearance.App.Overline"
+                android:textColor="@color/blanco_60" />
+
+            <TextView
+                android:id="@+id/txtNombreUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/esp_xs"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.App.HeadlineMedium"
+                android:textColor="@color/blanco"
+                tools:text="ricardo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/esp_m"
+                android:text="@string/bienvenida_descripcion"
+                android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                android:textColor="@color/blanco_80" />
+
+            <!-- Cifras del equipo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/esp_xl"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtTotalIntegrantes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+                        android:textColor="@color/blanco"
+                        tools:text="3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/resumen_integrantes"
+                        android:textAppearance="@style/TextAppearance.App.Overline"
+                        android:textColor="@color/blanco_60" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/esp_l"
+                    android:layout_marginEnd="@dimen/esp_l"
+                    android:background="@color/blanco_24" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtValoracionMedia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+                        android:textColor="@color/blanco"
+                        tools:text="4,2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/resumen_valoracion"
+                        android:textAppearance="@style/TextAppearance.App.Overline"
+                        android:textColor="@color/blanco_60" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- ============ ACCESOS RÁPIDOS ============ -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_xl"
+            android:text="@string/bienvenida_atajos"
+            android:textAppearance="@style/TextAppearance.App.Overline"
+            android:textColor="?attr/colorPrimary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_xs"
+            android:text="@string/bienvenida_titular"
+            android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+            android:textColor="?attr/colorOnBackground" />
+
+        <include
+            android:id="@+id/atajoEquipo"
+            layout="@layout/item_atajo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_l" />
+
+        <include
+            android:id="@+id/atajoAgregar"
+            layout="@layout/item_atajo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_m" />
+
+        <include
+            android:id="@+id/atajoGrabar"
+            layout="@layout/item_atajo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_m" />
+
+        <include
+            android:id="@+id/atajoAudios"
+            layout="@layout/item_atajo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_m" />
+
+    </LinearLayout>
+
+</ScrollView>

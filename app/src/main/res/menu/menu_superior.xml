@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Menú de la barra superior: multimedia y cierre de sesión. -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/accion_grabar"
+        android:icon="@drawable/ic_microfono"
+        android:title="@string/nav_grabar"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/accion_audios"
+        android:icon="@drawable/ic_biblioteca_audio"
+        android:title="@string/nav_audios"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/accion_cerrar_sesion"
+        android:icon="@drawable/ic_salir"
+        android:title="@string/nav_cerrar_sesion"
+        app:showAsAction="never" />
+
+</menu>
