@@ -1,135 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Diseño del formulario hecho por Byron Bravo -->
-<!-- Contenedor principal para los datos del estudiante -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Pestaña «Agregar»: alta de un integrante del equipo. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F8FBFF"
-    tools:ignore="HardcodedText, ContentDescription, Autofill">
+    android:clipToPadding="false"
+    android:scrollbars="none"
+    tools:context=".FormularioFragment">
 
-    <!-- Barra superior hecha por Byron Bravo -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0A193F"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/bg_gradient_urban"
-            app:tint="#FFFFFF" />
+        android:orientation="vertical"
+        android:paddingStart="@dimen/esp_l"
+        android:paddingTop="@dimen/esp_l"
+        android:paddingEnd="@dimen/esp_l"
+        android:paddingBottom="@dimen/esp_xl">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Agregar Estudiante"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:text="@string/form_titulo"
+            android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+            android:textColor="?attr/colorOnBackground" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="32dp"
-            android:gravity="center_horizontal">
+            android:layout_marginTop="@dimen/esp_xs"
+            android:text="@string/form_subtitulo"
+            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
 
-            <ImageView
-                android:id="@+id/iv_avatar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/bg_gradient_urban"
-                android:layout_marginBottom="16dp"
-                app:tint="#4285F4"/>
+        <!-- ============ DATOS PERSONALES ============ -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_l"
+            app:cardCornerRadius="@dimen/radio_m">
 
-            <!-- Ingreso del nombre con estilo redondo -->
-            <EditText
-                android:id="@+id/et_nombre"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/bg_gradient_urban"
-                android:drawableStart="@drawable/bg_gradient_urban"
-                android:drawablePadding="12dp"
-                android:hint="Nombre del estudiante"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:inputType="textPersonName"/>
-
-            <!-- Seleccion del rol -->
-            <Spinner
-                android:id="@+id/sp_rol"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/bg_gradient_urban"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="16dp"/>
-
-            <!-- Casillas para las tecnologias, programado por Byron Bravo -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tecnologías:"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:layout_marginBottom="8dp"/>
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:layout_marginBottom="16dp">
-                <CheckBox android:id="@+id/cb_java" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Java" />
-                <CheckBox android:id="@+id/cb_android" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Android" />
-                <CheckBox android:id="@+id/cb_web" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Web" />
-                <CheckBox android:id="@+id/cb_ia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IA" />
-                <CheckBox android:id="@+id/cb_diseno" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Diseño" />
-                <CheckBox android:id="@+id/cb_otros" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Otros" />
-            </GridLayout>
-
-            <!-- Seleccion del genero del estudiante por Byron Bravo -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Género:"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:layout_marginBottom="8dp"/>
-
-            <RadioGroup
-                android:id="@+id/rg_genero"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="24dp">
-                <RadioButton android:id="@+id/rb_masculino" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Masculino" />
-                <RadioButton android:id="@+id/rb_femenino" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Femenino" />
-                <RadioButton android:id="@+id/rb_otro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Otro" />
-            </RadioGroup>
+                android:padding="@dimen/esp_l">
 
-            <Button
-                android:id="@+id/btn_agregar"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_avatar"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circulo_suave"
+                        android:contentDescription="@null"
+                        android:padding="@dimen/esp_m"
+                        android:src="@drawable/ic_agregar_persona"
+                        app:tint="?attr/colorOnPrimaryContainer" />
+
+                    <TextView
+                        style="@style/Texto.Etiqueta"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/esp_l"
+                        android:layout_weight="1"
+                        android:text="@string/form_datos" />
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_l"
+                    android:hint="@string/form_nombre"
+                    app:startIconDrawable="@drawable/ic_persona">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_nombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="name"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/Texto.Etiqueta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_l"
+                    android:text="@string/form_rol" />
+
+                <Spinner
+                    android:id="@+id/sp_rol"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/alto_campo"
+                    android:layout_marginTop="@dimen/esp_s"
+                    android:background="@drawable/bg_campo_claro"
+                    android:paddingStart="@dimen/esp_l"
+                    android:paddingEnd="@dimen/esp_l" />
+
+                <TextView
+                    style="@style/Texto.Etiqueta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_l"
+                    android:text="@string/form_jornada" />
+
+                <Spinner
+                    android:id="@+id/sp_jornada"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/alto_campo"
+                    android:layout_marginTop="@dimen/esp_s"
+                    android:background="@drawable/bg_campo_claro"
+                    android:paddingStart="@dimen/esp_l"
+                    android:paddingEnd="@dimen/esp_l" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ============ TECNOLOGÍAS ============ -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_m"
+            app:cardCornerRadius="@dimen/radio_m">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:backgroundTint="#4285F4"
-                android:text="Agregar estudiante"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/esp_l">
 
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+                <TextView
+                    style="@style/Texto.Etiqueta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/form_tecnologias" />
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_s"
+                    android:columnCount="2">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cb_java"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="@string/opcion_java" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cb_android"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="@string/opcion_android" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cb_web"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="@string/opcion_web" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cb_ia"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="@string/opcion_ia" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cb_diseno"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="@string/opcion_diseno" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cb_otros"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="@string/opcion_otros" />
+
+                </GridLayout>
+
+                <TextView
+                    style="@style/Texto.Etiqueta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_l"
+                    android:text="@string/form_genero" />
+
+                <RadioGroup
+                    android:id="@+id/rg_genero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_xs"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_masculino"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/genero_masculino" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_femenino"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/genero_femenino" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_otro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/genero_otro" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_agregar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_l"
+            android:text="@string/form_agregar"
+            app:icon="@drawable/ic_agregar"
+            app:iconGravity="textStart" />
+
+    </LinearLayout>
+
+</ScrollView>

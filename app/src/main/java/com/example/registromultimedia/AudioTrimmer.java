@@ -5,6 +5,12 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.media.MediaMuxer;
 
+import androidx.annotation.NonNull;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 
 /**
@@ -12,7 +18,41 @@ import java.nio.ByteBuffer;
  * muestras directamente del contenedor original a uno nuevo, sin
  * necesidad de decodificar ni volver a codificar el audio.
  */
-public class AudioTrimmer {
+public final class AudioTrimmer {
+
+    private AudioTrimmer() {
+        // Clase de utilidad: no se instancia.
+    }
+
+    /**
+     * Copia {@code origen} sobre {@code destino}.
+     *
+     * <p>El recorte se aplica copiando el resultado encima del audio
+     * original en lugar de borrarlo y renombrar el temporal: si el
+     * renombrado fallaba, el original ya estaba borrado y la grabación se
+     * perdía para siempre.</p>
+     *
+     * @return {@code true} si la copia se completó.
+     */
+    public static boolean copiar(@NonNull File origen, @NonNull File destino) {
+
+        try (FileInputStream entrada = new FileInputStream(origen);
+             FileOutputStream salida = new FileOutputStream(destino)) {
+
+            byte[] buffer = new byte[8192];
+            int leidos;
+
+            while ((leidos = entrada.read(buffer)) > 0) {
+                salida.write(buffer, 0, leidos);
+            }
+
+            salida.getFD().sync();
+            return true;
+
+        } catch (IOException e) {
+            return false;
+        }
+    }
 
     public static boolean cortarAudio(
             String rutaOrigen,

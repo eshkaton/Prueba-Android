@@ -8,118 +8,197 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-// Clase para controlar el progreso y la valoración del integrante
-// Estructurado por Juan Carlos Levin
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.List;
+
+/**
+ * Pestaña «Progreso»: nivel, valoración y comentarios de un integrante.
+ *
+ * <p>La valoración ya no se pierde en un Toast: se guarda en el integrante
+ * elegido, así que el listado y la media de la bienvenida la reflejan.</p>
+ */
 public class ProgresoFragment extends Fragment {
 
+    /** Campos que cuentan para la barra de progreso. */
+    private static final int TOTAL_CAMPOS = 3;
+
+    private Spinner spIntegrante;
     private Spinner spNivel;
     private RatingBar rbValoracion;
-    private EditText etComentarios;
-    private ProgressBar pbProgreso;
+    private TextInputEditText etComentarios;
+    private LinearProgressIndicator pbProgreso;
     private TextView tvProgreso;
-    private Button btnGuardar;
+    private TextView tvSinIntegrantes;
+    private MaterialButton btnGuardar;
 
-    private boolean nivelSeleccionado = false;
+    /** Posición del elemento «Selecciona un nivel» dentro del Spinner. */
+    private static final int POSICION_SIN_NIVEL = 0;
 
-    // Inicializa la vista y enlaza los componentes
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_progreso, container, false);
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState
+    ) {
+        return inflater.inflate(R.layout.fragment_progreso, container, false);
+    }
 
-        spNivel = view.findViewById(R.id.sp_nivel);
-        rbValoracion = view.findViewById(R.id.rb_valoracion);
-        etComentarios = view.findViewById(R.id.et_comentarios);
-        pbProgreso = view.findViewById(R.id.pb_progreso);
-        tvProgreso = view.findViewById(R.id.tv_progreso);
-        btnGuardar = view.findViewById(R.id.btn_guardar);
+    @Override
+    public void onViewCreated(@NonNull View vista, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(vista, savedInstanceState);
+
+        spIntegrante = vista.findViewById(R.id.sp_integrante);
+        spNivel = vista.findViewById(R.id.sp_nivel);
+        rbValoracion = vista.findViewById(R.id.rb_valoracion);
+        etComentarios = vista.findViewById(R.id.et_comentarios);
+        pbProgreso = vista.findViewById(R.id.pb_progreso);
+        tvProgreso = vista.findViewById(R.id.tv_progreso);
+        tvSinIntegrantes = vista.findViewById(R.id.tv_sin_integrantes);
+        btnGuardar = vista.findViewById(R.id.btn_guardar);
 
         configurarNiveles();
         configurarListeners();
-
-        return view;
+        actualizarProgreso();
     }
 
-    // Puebla la lista de opciones para el nivel de experiencia
+    @Override
+    public void onResume() {
+        super.onResume();
+        // La lista puede haber crecido mientras se usaba otra pestaña.
+        cargarIntegrantes();
+    }
+
+    private void cargarIntegrantes() {
+        List<Integrante> integrantes = IntegranteRepository.getIntegrantes();
+        boolean vacio = integrantes.isEmpty();
+
+        tvSinIntegrantes.setVisibility(vacio ? View.VISIBLE : View.GONE);
+        spIntegrante.setEnabled(!vacio);
+        btnGuardar.setEnabled(!vacio);
+
+        ArrayAdapter<Integrante> adapter = new ArrayAdapter<>(
+                requireContext(), android.R.layout.simple_spinner_item, integrantes);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spIntegrante.setAdapter(adapter);
+    }
+
     private void configurarNiveles() {
-        String[] niveles = {"Principiante", "Intermedio", "Avanzado", "Experto"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, niveles);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                requireContext(), R.array.niveles_array, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spNivel.setAdapter(adapter);
 
+        // El Spinner avisa de una selección en cuanto recibe su adaptador.
+        // Por eso la primera opción es un texto de aviso en lugar de un nivel
+        // real: así el progreso arranca en 0 % y no en 33 %, como ocurría
+        // cuando «Principiante» quedaba seleccionado de entrada.
         spNivel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                nivelSeleccionado = true;
+            public void onItemSelected(AdapterView<?> parent, View vista, int posicion, long id) {
                 actualizarProgreso();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                nivelSeleccionado = false;
                 actualizarProgreso();
             }
         });
     }
 
-    // Configura los listeners del rating, comentarios y boton guardar
     private void configurarListeners() {
+        rbValoracion.setOnRatingBarChangeListener(
+                (barra, valoracion, deUsuario) -> actualizarProgreso());
 
-        // Listener del RatingBar que obtiene la cantidad de estrellas seleccionadas
-        rbValoracion.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> actualizarProgreso());
-
-        // Escucha los cambios en el campo de comentarios para el progreso en vivo
         etComentarios.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int inicio, int cuenta, int despues) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(CharSequence s, int inicio, int antes, int cuenta) {
                 actualizarProgreso();
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) { }
         });
 
         btnGuardar.setOnClickListener(v -> guardarValoracion());
     }
 
-    // Calcula el avance del ProgressBar segun los campos completados
     private void actualizarProgreso() {
-        int camposCompletados = 0;
-        int totalCampos = 3;
+        int completados = 0;
 
-        if (nivelSeleccionado) camposCompletados++;
-        if (rbValoracion.getRating() > 0) camposCompletados++;
-        if (!etComentarios.getText().toString().trim().isEmpty()) camposCompletados++;
+        if (hayNivelElegido()) completados++;
+        if (rbValoracion.getRating() > 0) completados++;
+        if (!comentario().isEmpty()) completados++;
 
-        int porcentaje = (camposCompletados * 100) / totalCampos;
-        pbProgreso.setProgress(porcentaje);
-        tvProgreso.setText("Progreso: " + porcentaje + "%");
+        int porcentaje = (completados * 100) / TOTAL_CAMPOS;
+
+        pbProgreso.setProgressCompat(porcentaje, true);
+        tvProgreso.setText(getString(R.string.progreso_etiqueta, porcentaje));
     }
 
-    // Recopila la valoracion y el nivel de experiencia del integrante
     private void guardarValoracion() {
-        String nivel = spNivel.getSelectedItem() != null ? spNivel.getSelectedItem().toString() : "";
-        float estrellas = rbValoracion.getRating();
-        String comentario = etComentarios.getText().toString();
+        Object seleccion = spIntegrante.getSelectedItem();
 
-        // Aqui se integraria con el modelo Integrante ya definido por el equipo
-        // para guardar el nivel, la valoración y el comentario del integrante
-        String resumen = "Guardado: " + nivel + ", " + (int) estrellas + " estrellas, \"" + comentario + "\"";
-        Toast.makeText(requireContext(), resumen, Toast.LENGTH_SHORT).show();
+        if (!(seleccion instanceof Integrante)) {
+            Toast.makeText(
+                    requireContext(),
+                    R.string.progreso_sin_integrantes,
+                    Toast.LENGTH_SHORT
+            ).show();
+            return;
+        }
 
+        Integrante integrante = (Integrante) seleccion;
+
+        integrante.setValoracion(rbValoracion.getRating());
+        integrante.setComentario(comentario());
+
+        Object nivel = spNivel.getSelectedItem();
+        if (hayNivelElegido() && nivel != null) {
+            integrante.setNivel(nivel.toString());
+        }
+
+        Toast.makeText(
+                requireContext(),
+                getString(R.string.exito_valoracion, integrante.getNombre()),
+                Toast.LENGTH_SHORT
+        ).show();
+
+        limpiarFormulario();
+    }
+
+    private boolean hayNivelElegido() {
+        return spNivel.getSelectedItemPosition() != POSICION_SIN_NIVEL;
+    }
+
+    @NonNull
+    private String comentario() {
+        return etComentarios.getText() == null
+                ? ""
+                : etComentarios.getText().toString().trim();
+    }
+
+    private void limpiarFormulario() {
         etComentarios.setText("");
         rbValoracion.setRating(0);
-        spNivel.setSelection(0);
+        spNivel.setSelection(POSICION_SIN_NIVEL);
         actualizarProgreso();
     }
 }

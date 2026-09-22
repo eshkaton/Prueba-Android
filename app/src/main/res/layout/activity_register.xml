@@ -1,148 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Alta de cuenta. Comparte el tema y el degradado de la pantalla de acceso. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:scrollbars="none"
     tools:context=".RegisterActivity">
 
-    <!-- Barra superior azul -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/topBar"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:background="#121D42"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/esp_xl"
+        android:paddingTop="@dimen/esp_l"
+        android:paddingEnd="@dimen/esp_xl"
+        android:paddingBottom="@dimen/esp_xl">
 
-        <!-- Botón de retroceso (Flecha atrás) -->
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/ic_arrow_back"
-            app:tint="#FFFFFF"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/desc_volver"
+            android:focusable="true"
+            android:padding="@dimen/esp_s"
+            android:src="@drawable/ic_atras"
+            app:tint="@color/blanco" />
 
-        <!-- Título de la barra -->
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/esp_xl"
+            android:background="@drawable/bg_circulo_translucido"
+            android:contentDescription="@string/desc_logo"
+            android:padding="@dimen/esp_l"
+            android:src="@drawable/ic_agregar_persona"
+            app:tint="@color/blanco" />
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Registro de Usuario"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnBack" />
+            android:layout_marginTop="@dimen/esp_l"
+            android:text="@string/registro_titulo"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.App.HeadlineMedium"
+            android:textColor="@color/blanco" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/txtSubtitleRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_s"
+            android:text="@string/registro_subtitulo"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+            android:textColor="@color/blanco_80" />
 
-    <!-- Icono central (Usuario con más) -->
-    <ImageView
-        android:id="@+id/imgUserAdd"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/ic_person_add"
-        app:tint="#3B82F6"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilRegisterEmail"
+            style="@style/Widget.App.TextInputLayout.Acceso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_xxl"
+            android:hint="@string/registro_correo"
+            app:startIconDrawable="@drawable/ic_correo">
 
-    <!-- Subtítulo descriptivo -->
-    <TextView
-        android:id="@+id/txtSubtitleRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Crea tu cuenta para comenzar"
-        android:textColor="#4B5563"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/imgUserAdd"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editRegisterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="emailAddress"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
 
-    <!-- Campo Correo Electrónico -->
-    <EditText
-        android:id="@+id/editRegisterEmail"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/bg_rounded_input_white"
-        android:drawableStart="@drawable/ic_mail"
-        android:drawablePadding="12dp"
-        android:hint="Correo electrónico"
-        android:inputType="textEmailAddress"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:textColor="#000000"
-        android:textColorHint="#9CA3AF"
-        app:layout_constraintTop_toBottomOf="@id/txtSubtitleRegister"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Campo Contraseña -->
-    <EditText
-        android:id="@+id/editRegisterPassword"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_rounded_input_white"
-        android:drawableStart="@drawable/ic_lock"
-        android:drawablePadding="12dp"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:textColor="#000000"
-        android:textColorHint="#9CA3AF"
-        app:layout_constraintTop_toBottomOf="@id/editRegisterEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilRegisterPassword"
+            style="@style/Widget.App.TextInputLayout.Acceso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_m"
+            android:hint="@string/registro_password"
+            app:endIconMode="password_toggle"
+            app:helperText="@string/registro_ayuda_password"
+            app:helperTextTextColor="@color/blanco_60"
+            app:startIconDrawable="@drawable/ic_candado">
 
-    <!-- Botón Registrar -->
-    <Button
-        android:id="@+id/btnConfirmRegister"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="#3B82F6"
-        android:text="Registrar"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:cornerRadius="26dp"
-        app:layout_constraintTop_toBottomOf="@id/editRegisterPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editRegisterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="newPassword"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLines="1" />
 
-    <!-- Enlace Volver al inicio -->
-    <TextView
-        android:id="@+id/txtBackToLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Volver al inicio"
-        android:textColor="#3B82F6"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/btnConfirmRegister"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilRegisterPassword2"
+            style="@style/Widget.App.TextInputLayout.Acceso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_m"
+            android:hint="@string/registro_password_repetir"
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_verificado">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editRegisterPassword2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="newPassword"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmRegister"
+            style="@style/Widget.App.Button.Acceso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_xl"
+            android:text="@string/registro_confirmar" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/txtBackToLogin"
+            style="@style/Widget.App.Button.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_l"
+            android:text="@string/registro_volver"
+            android:textColor="@color/blanco" />
+
+    </LinearLayout>
+
+</ScrollView>

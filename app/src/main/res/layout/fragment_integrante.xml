@@ -1,27 +1,70 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pestaña «Equipo»: listado de integrantes registrados. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".IntegranteFragment">
 
-    <TextView
-        android:id="@+id/lblRecycler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lista de Integrantes"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerIntegrantes"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="12dp"
-        tools:listitem="@layout/item_integrante"
-        tools:itemCount="3" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/esp_l"
+        android:paddingTop="@dimen/esp_l"
+        android:paddingEnd="@dimen/esp_l"
+        android:paddingBottom="@dimen/esp_s">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/equipo_titulo"
+            android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+            android:textColor="?attr/colorOnBackground" />
+
+        <TextView
+            android:id="@+id/txtContadorIntegrantes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_xs"
+            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:text="3 integrantes registrados" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerIntegrantes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/esp_l"
+            android:paddingEnd="@dimen/esp_l"
+            android:paddingBottom="@dimen/esp_l"
+            android:scrollbars="vertical"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_integrante" />
+
+        <TextView
+            android:id="@+id/txtEquipoVacio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/esp_xl"
+            android:text="@string/equipo_vacio"
+            android:textAppearance="@style/TextAppearance.App.BodyLarge"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </FrameLayout>
 
 </LinearLayout>

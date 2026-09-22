@@ -1,76 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Ficha de un integrante, abierta desde el listado del equipo. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_horizontal">
+    tools:context=".DetalleIntegranteActivity">
 
-    <!-- Título de la pantalla -->
-    <TextView
-        android:id="@+id/tvTituloDetalle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Detalle del Integrante"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
-
-    <!-- Imagen del integrante -->
-    <ImageView
-        android:id="@+id/imgFotoDetalle"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="16dp"
-        android:src="@mipmap/ic_launcher" />
-
-    <!-- Nombre -->
-    <TextView
-        android:id="@+id/tvNombreDetalle"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarDetalle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_height="?attr/actionBarSize"
+        app:navigationContentDescription="@string/desc_volver"
+        app:navigationIcon="@drawable/ic_atras"
+        app:title="@string/detalle_titulo" />
 
-    <!-- Rol -->
-    <TextView
-        android:id="@+id/tvRolDetalle"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:scrollbars="none">
 
-    <!-- Tecnologías -->
-    <TextView
-        android:id="@+id/tvTecnologiasDetalle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/esp_l"
+            android:paddingTop="@dimen/esp_s"
+            android:paddingEnd="@dimen/esp_l"
+            android:paddingBottom="@dimen/esp_xl">
 
-    <!-- jornada -->
-    <TextView
-        android:id="@+id/tvJornadaDetalle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginBottom="12dp"/>
+            <!-- Cabecera -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_hero_aurora"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/esp_xl">
 
-    <!-- Valoración de estrellas -->
-    <RatingBar
-        android:id="@+id/ratingBarDetalle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="1.0"
-        android:layout_marginBottom="24dp"
-        android:isIndicator="true"/>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgFotoDetalle"
+                    android:layout_width="@dimen/avatar_detalle"
+                    android:layout_height="@dimen/avatar_detalle"
+                    android:contentDescription="@string/desc_avatar"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circular"
+                    app:strokeColor="@color/blanco_24"
+                    app:strokeWidth="3dp"
+                    tools:src="@drawable/ic_avatar_generico" />
 
-    <!-- Botón para volver -->
-    <Button
-        android:id="@+id/btnVolver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volver"/>
+                <TextView
+                    android:id="@+id/tvNombreDetalle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_l"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+                    android:textColor="@color/blanco"
+                    tools:text="Lucas Bilbao" />
+
+                <TextView
+                    android:id="@+id/tvRolDetalle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_s"
+                    android:background="@drawable/bg_pildora_translucida"
+                    android:paddingStart="@dimen/esp_m"
+                    android:paddingTop="@dimen/esp_xs"
+                    android:paddingEnd="@dimen/esp_m"
+                    android:paddingBottom="@dimen/esp_xs"
+                    android:textAppearance="@style/TextAppearance.App.Overline"
+                    android:textColor="@color/blanco"
+                    tools:text="Desarrollador" />
+
+                <RatingBar
+                    android:id="@+id/ratingBarDetalle"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_l"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.5"
+                    tools:rating="5" />
+
+            </LinearLayout>
+
+            <!-- Datos -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/esp_l"
+                app:cardCornerRadius="@dimen/radio_m">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/esp_l">
+
+                    <TextView
+                        style="@style/Texto.Etiqueta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detalle_tecnologias" />
+
+                    <TextView
+                        android:id="@+id/tvTecnologiasDetalle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/esp_xs"
+                        android:textAppearance="@style/TextAppearance.App.BodyLarge"
+                        android:textColor="?attr/colorOnSurface"
+                        tools:text="Java, Android" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/esp_l"
+                        android:layout_marginBottom="@dimen/esp_l"
+                        android:background="?attr/colorOutlineVariant" />
+
+                    <TextView
+                        style="@style/Texto.Etiqueta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detalle_jornada" />
+
+                    <TextView
+                        android:id="@+id/tvJornadaDetalle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/esp_xs"
+                        android:textAppearance="@style/TextAppearance.App.BodyLarge"
+                        android:textColor="?attr/colorOnSurface"
+                        tools:text="Diurno" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVolver"
+                style="@style/Widget.App.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/esp_xl"
+                android:text="@string/detalle_volver"
+                app:icon="@drawable/ic_atras"
+                app:iconGravity="textStart" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

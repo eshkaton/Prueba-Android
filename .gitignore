@@ -1,12 +1,9 @@
 *.iml
 .gradle
+
+# Configuración local de Android Studio: es de cada máquina, no del proyecto.
+/.idea
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
 .DS_Store
 /build
 /captures

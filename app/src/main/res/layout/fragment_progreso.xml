@@ -1,128 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Diseño de la pantalla de Progreso y Valoración -->
-<!-- Hecho por Alexi Oyarzún y Benjamín Ramos -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Pestaña «Progreso»: nivel, valoración y comentarios de un integrante. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F8FBFF"
-    tools:ignore="HardcodedText, ContentDescription, Autofill">
+    android:clipToPadding="false"
+    android:scrollbars="none"
+    tools:context=".ProgresoFragment">
 
-    <!-- Barra superior, mismo estilo usado por el grupo anterior -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0A193F"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:orientation="vertical"
+        android:paddingStart="@dimen/esp_l"
+        android:paddingTop="@dimen/esp_l"
+        android:paddingEnd="@dimen/esp_l"
+        android:paddingBottom="@dimen/esp_xl">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Progreso y Valoración"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:text="@string/progreso_titulo"
+            android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+            android:textColor="?attr/colorOnBackground" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="32dp">
+            android:layout_marginTop="@dimen/esp_xs"
+            android:text="@string/progreso_subtitulo"
+            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
 
-            <!-- Nivel de experiencia -->
-            <TextView
+        <!-- ============ AVANCE ============ -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.Card.Acento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_l"
+            app:cardCornerRadius="@dimen/radio_m">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nivel de experiencia:"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:layout_marginBottom="8dp"/>
+                android:orientation="vertical"
+                android:padding="@dimen/esp_l">
 
-            <Spinner
-                android:id="@+id/sp_nivel"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#FFFFFF"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="24dp"/>
+                <TextView
+                    android:id="@+id/tv_progreso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+                    android:textColor="?attr/colorOnPrimaryContainer"
+                    tools:text="Progreso: 66 %" />
 
-            <!-- Valoración con estrellas -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Valoración:"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:layout_marginBottom="8dp"/>
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/pb_progreso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_m"
+                    android:max="100"
+                    app:indicatorColor="?attr/colorPrimary"
+                    app:trackColor="@color/blanco_60"
+                    app:trackCornerRadius="6dp"
+                    app:trackThickness="10dp"
+                    tools:progress="66" />
 
-            <RatingBar
-                android:id="@+id/rb_valoracion"
-                style="?android:attr/ratingBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:numStars="5"
-                android:stepSize="1"
-                android:layout_marginBottom="24dp"/>
+            </LinearLayout>
 
-            <!-- Campo de comentarios -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Comentarios:"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:layout_marginBottom="8dp"/>
+        </com.google.android.material.card.MaterialCardView>
 
-            <EditText
-                android:id="@+id/et_comentarios"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="#FFFFFF"
-                android:gravity="top|start"
-                android:hint="Escribe un comentario sobre el integrante"
-                android:padding="12dp"
-                android:inputType="textMultiLine"
-                android:layout_marginBottom="24dp"/>
+        <!-- ============ FORMULARIO DE VALORACIÓN ============ -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_m"
+            app:cardCornerRadius="@dimen/radio_m">
 
-            <!-- Barra de progreso en vivo -->
-            <TextView
-                android:id="@+id/tv_progreso"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Progreso: 0%"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:layout_marginBottom="8dp"/>
+                android:orientation="vertical"
+                android:padding="@dimen/esp_l">
 
-            <ProgressBar
-                android:id="@+id/pb_progreso"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="0"
-                android:layout_marginBottom="24dp"/>
+                <TextView
+                    style="@style/Texto.Etiqueta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/progreso_integrante" />
 
-            <Button
-                android:id="@+id/btn_guardar"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:backgroundTint="#4285F4"
-                android:text="Guardar integrante"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
+                <Spinner
+                    android:id="@+id/sp_integrante"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/alto_campo"
+                    android:layout_marginTop="@dimen/esp_s"
+                    android:background="@drawable/bg_campo_claro"
+                    android:paddingStart="@dimen/esp_l"
+                    android:paddingEnd="@dimen/esp_l" />
 
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+                <TextView
+                    android:id="@+id/tv_sin_integrantes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_s"
+                    android:text="@string/progreso_sin_integrantes"
+                    android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                    android:textColor="?attr/colorError"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <TextView
+                    style="@style/Texto.Etiqueta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_l"
+                    android:text="@string/progreso_nivel" />
+
+                <Spinner
+                    android:id="@+id/sp_nivel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/alto_campo"
+                    android:layout_marginTop="@dimen/esp_s"
+                    android:background="@drawable/bg_campo_claro"
+                    android:paddingStart="@dimen/esp_l"
+                    android:paddingEnd="@dimen/esp_l" />
+
+                <TextView
+                    style="@style/Texto.Etiqueta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_l"
+                    android:text="@string/progreso_valoracion" />
+
+                <RatingBar
+                    android:id="@+id/rb_valoracion"
+                    style="?android:attr/ratingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/esp_s"
+                    android:numStars="5"
+                    android:stepSize="1" />
+
+                <TextView
+                    style="@style/Texto.Etiqueta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_l"
+                    android:text="@string/progreso_comentarios" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_comentarios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/esp_s"
+                    android:hint="@string/progreso_comentarios_pista">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_comentarios"
+                        android:layout_width="match_parent"
+                        android:layout_height="112dp"
+                        android:gravity="top|start"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:maxLength="280" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_guardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_l"
+            android:text="@string/progreso_guardar"
+            app:icon="@drawable/ic_guardar"
+            app:iconGravity="textStart" />
+
+    </LinearLayout>
+
+</ScrollView>

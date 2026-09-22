@@ -1,61 +1,213 @@
-<resources> <!-- Nombre de la aplicación -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
     <string name="app_name">Registro Multimedia</string>
-    <!-- Login -->
-    <string name="login_title">Iniciar sesión</string>
-    <string name="login_subtitle">Accede a tu cuenta para continuar</string>
-    <string name="login_email">Correo electrónico</string>
-    <string name="login_password">Contraseña</string>
-    <string name="login_button">Ingresar</string>
-    <string name="login_forgot_password">¿Olvidaste tu contraseña?</string>
 
-    <!-- Inicio strings Grupo 6-->
-    <string name="volver_grabacion">Volver a grabación</string>
-    <string name="reproduccion_audio">Reproducción de Audio</string>
-    <string name="sin_audios_guardados">Aún no tienes grabaciones guardadas.\nVe a Grabación para crear la primera.</string>
-    <string name="selecciona_audio">Selecciona un audio para reproducir</string>
-    <string name="tiempo_audio_inicial">00:00 / 00:00</string>
-    <string name="cortar_audio">Cortar audio</string>
-    <string name="cortar">Cortar</string>
-    <string name="reproducir_pausar">Reproducir o pausar</string>
-    <string name="reproducir">Reproducir</string>
-    <string name="eliminar_audio">Eliminar audio</string>
-    <string name="eliminar">Eliminar</string>
+    <!-- ===================== ACCESO ===================== -->
+    <string name="acceso_titulo">Registro Multimedia</string>
+    <string name="acceso_lema">Tu equipo y tus grabaciones, en un solo lugar.</string>
+    <string name="acceso_usuario">Usuario o correo</string>
+    <string name="acceso_password">Contraseña</string>
+    <string name="acceso_entrar">Iniciar sesión</string>
+    <string name="acceso_crear_cuenta">Crear una cuenta</string>
+    <string name="acceso_sin_cuenta">¿Todavía no tienes cuenta?</string>
+    <string name="acceso_registrate">Regístrate</string>
+    <string name="acceso_pista_demo">Demo: admin / 1234</string>
 
-    <string name="inicio_audio">Inicio: 00:00</string>
-    <string name="fin_audio">Fin: 00:00</string>
+    <string name="error_usuario_vacio">Ingresa tu usuario o correo</string>
+    <string name="error_password_vacio">Ingresa tu contraseña</string>
+    <string name="error_credenciales">Usuario o contraseña incorrectos</string>
+    <string name="exito_sesion">¡Bienvenido de vuelta!</string>
 
-    <string name="volver">Volver</string>
-    <string name="grabacion_audio">Grabación de Audio</string>
-    <string name="estado_grabacion">Estado de grabación</string>
-    <string name="listo_para_grabar">Listo para grabar</string>
-    <string name="toca_boton_comenzar">Toca el botón para comenzar</string>
-    <string name="grabar_audio">Grabar audio</string>
-    <string name="grabar">Grabar</string>
-    <string name="detener_grabacion">Detener grabación</string>
-    <string name="detener">Detener</string>
-    <string name="guardar_grabacion">Guardar grabación</string>
-    <string name="guardar">Guardar</string>
-    <string name="ultima_grabacion">Última grabación</string>
-    <string name="reproducir_audio">Reproducir audio</string>
+    <!-- ===================== REGISTRO ===================== -->
+    <string name="registro_titulo">Crear cuenta</string>
+    <string name="registro_subtitulo">Solo necesitas un correo y una contraseña para empezar.</string>
+    <string name="registro_correo">Correo electrónico</string>
+    <string name="registro_password">Contraseña</string>
+    <string name="registro_password_repetir">Repetir contraseña</string>
+    <string name="registro_confirmar">Registrarme</string>
+    <string name="registro_volver">Volver al inicio de sesión</string>
+    <string name="registro_ayuda_password">Mínimo 6 caracteres.</string>
 
-    <string name="audio">Audio</string>
-    <string name="grabacion">Grabación</string>
-    <string name="tiempo_cero">00:00</string>
-    <!-- Final strings Grupo 6-->
+    <string name="error_correo_vacio">Ingresa tu correo electrónico</string>
+    <string name="error_correo_invalido">Ese correo no tiene un formato válido</string>
+    <string name="error_correo_repetido">Ya existe una cuenta con ese correo</string>
+    <string name="error_password_corta">La contraseña necesita al menos 6 caracteres</string>
+    <string name="error_password_distinta">Las contraseñas no coinciden</string>
+    <string name="exito_cuenta_creada">¡Cuenta creada! Ya puedes iniciar sesión.</string>
 
-    <!-- Información -->
-    <string name="app_footer">© 2026 Registro Multimedia</string>
-    <!-- Opciones para el Spinner de carreras -->
-    <string-array name="carreras_array">
-        <item>Seleccione carrera</item>
-        <item>Ingeniería en Informática</item>
-        <item>Analista Programador</item>
-        <item>CiberSeguridad</item>
-        <item>Técnico en Informática</item>
+    <!-- ===================== BIENVENIDA ===================== -->
+    <string name="bienvenida_saludo">Hola,</string>
+    <string name="bienvenida_invitado">invitado</string>
+    <string name="bienvenida_titular">¿Qué quieres hacer hoy?</string>
+    <string name="bienvenida_descripcion">Registra a tu equipo, valora su avance y guarda notas de voz sin salir de la app.</string>
+    <string name="bienvenida_atajos">Accesos rápidos</string>
+
+    <string name="atajo_equipo_titulo">Ver el equipo</string>
+    <string name="atajo_equipo_detalle">Consulta la ficha de cada integrante</string>
+    <string name="atajo_agregar_titulo">Agregar integrante</string>
+    <string name="atajo_agregar_detalle">Completa el formulario de registro</string>
+    <string name="atajo_grabar_titulo">Grabar una nota de voz</string>
+    <string name="atajo_grabar_detalle">Usa el micrófono del dispositivo</string>
+    <string name="atajo_audios_titulo">Mis grabaciones</string>
+    <string name="atajo_audios_detalle">Reproduce, recorta o elimina audios</string>
+
+    <string name="resumen_integrantes">Integrantes</string>
+    <string name="resumen_valoracion">Valoración media</string>
+
+    <!-- ===================== NAVEGACIÓN ===================== -->
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_equipo">Equipo</string>
+    <string name="nav_agregar">Agregar</string>
+    <string name="nav_progreso">Progreso</string>
+    <string name="nav_grabar">Grabar audio</string>
+    <string name="nav_audios">Mis grabaciones</string>
+    <string name="nav_cerrar_sesion">Cerrar sesión</string>
+    <string name="sesion_cerrada">Sesión cerrada</string>
+
+    <!-- ===================== EQUIPO ===================== -->
+    <string name="equipo_titulo">Integrantes del equipo</string>
+    <string name="equipo_vacio">Aún no hay integrantes.\nAgrega el primero desde la pestaña «Agregar».</string>
+    <string name="equipo_contador">%1$d integrantes registrados</string>
+    <string name="equipo_contador_uno">1 integrante registrado</string>
+
+    <string name="detalle_titulo">Ficha del integrante</string>
+    <string name="detalle_tecnologias">Tecnologías</string>
+    <string name="detalle_jornada">Jornada</string>
+    <string name="detalle_volver">Volver al equipo</string>
+    <string name="detalle_sin_dato">Sin especificar</string>
+
+    <!-- ===================== FORMULARIO ===================== -->
+    <string name="form_titulo">Nuevo integrante</string>
+    <string name="form_subtitulo">Los datos se guardan mientras la app esté abierta.</string>
+    <string name="form_datos">Datos personales</string>
+    <string name="form_nombre">Nombre completo</string>
+    <string name="form_rol">Rol en el equipo</string>
+    <string name="form_tecnologias">Tecnologías</string>
+    <string name="form_genero">Género</string>
+    <string name="form_jornada">Jornada</string>
+    <string name="form_agregar">Agregar al equipo</string>
+
+    <string name="opcion_java">Java</string>
+    <string name="opcion_android">Android</string>
+    <string name="opcion_web">Web</string>
+    <string name="opcion_ia">IA</string>
+    <string name="opcion_diseno">Diseño</string>
+    <string name="opcion_otros">Otros</string>
+
+    <string name="genero_masculino">Masculino</string>
+    <string name="genero_femenino">Femenino</string>
+    <string name="genero_otro">Otro</string>
+
+    <string name="error_nombre_vacio">Escribe el nombre del integrante</string>
+    <string name="error_nombre_corto">El nombre necesita al menos 3 caracteres</string>
+    <string name="exito_integrante">%1$s se agregó al equipo</string>
+    <string name="sin_tecnologias">Sin tecnologías</string>
+
+    <!-- ===================== PROGRESO ===================== -->
+    <string name="progreso_titulo">Progreso y valoración</string>
+    <string name="progreso_subtitulo" formatted="false">Completa los tres campos para llegar al 100 %.</string>
+    <string name="progreso_integrante">Integrante</string>
+    <string name="progreso_nivel">Nivel de experiencia</string>
+    <string name="progreso_valoracion">Valoración</string>
+    <string name="progreso_comentarios">Comentarios</string>
+    <string name="progreso_comentarios_pista">¿Cómo ha sido su aporte al equipo?</string>
+    <string name="progreso_etiqueta">Progreso: %1$d %%</string>
+    <string name="progreso_guardar">Guardar valoración</string>
+    <string name="progreso_sin_integrantes">Agrega un integrante para poder valorarlo.</string>
+    <string name="exito_valoracion">Valoración guardada para %1$s</string>
+
+    <string name="nivel_ninguno">Selecciona un nivel</string>
+    <string name="nivel_principiante">Principiante</string>
+    <string name="nivel_intermedio">Intermedio</string>
+    <string name="nivel_avanzado">Avanzado</string>
+    <string name="nivel_experto">Experto</string>
+
+    <string name="rol_desarrollador">Desarrollador</string>
+    <string name="rol_disenador">Diseñador</string>
+    <string name="rol_analista">Analista</string>
+    <string name="rol_tester">Tester</string>
+
+    <string name="jornada_diurno">Diurno</string>
+    <string name="jornada_vespertino">Vespertino</string>
+
+    <string-array name="roles_array">
+        <item>@string/rol_desarrollador</item>
+        <item>@string/rol_disenador</item>
+        <item>@string/rol_analista</item>
+        <item>@string/rol_tester</item>
     </string-array>
 
-    <string name="abrir_menu">Abrir menú</string>
-    <string name="cerrar_menu">Cerrar menú</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="niveles_array">
+        <item>@string/nivel_ninguno</item>
+        <item>@string/nivel_principiante</item>
+        <item>@string/nivel_intermedio</item>
+        <item>@string/nivel_avanzado</item>
+        <item>@string/nivel_experto</item>
+    </string-array>
+
+    <string-array name="jornadas_array">
+        <item>@string/jornada_diurno</item>
+        <item>@string/jornada_vespertino</item>
+    </string-array>
+
+    <!-- ===================== GRABACIÓN ===================== -->
+    <string name="grabacion_titulo">Grabación de audio</string>
+    <string name="grabacion_listo">Listo para grabar</string>
+    <string name="grabacion_listo_detalle">Toca el micrófono para comenzar</string>
+    <string name="grabacion_en_curso">Grabando…</string>
+    <string name="grabacion_en_curso_detalle">Toca «Detener» cuando termines</string>
+    <string name="grabacion_terminada">Grabación lista</string>
+    <string name="grabacion_terminada_detalle">Escúchala y guárdala si te convence</string>
+    <string name="grabacion_ultima">Última grabación</string>
+
+    <string name="accion_grabar">Grabar</string>
+    <string name="accion_detener">Detener</string>
+    <string name="accion_guardar">Guardar</string>
+    <string name="accion_reproducir">Reproducir</string>
+    <string name="accion_pausar">Pausar</string>
+    <string name="accion_cortar">Cortar</string>
+    <string name="accion_eliminar">Eliminar</string>
+    <string name="accion_cancelar">Cancelar</string>
+
+    <string name="permiso_microfono">Necesitamos el micrófono para poder grabar</string>
+    <string name="error_grabar">No se pudo iniciar la grabación</string>
+    <string name="error_grabacion_corta">La grabación fue demasiado corta</string>
+    <string name="error_guardar">No se pudo guardar el audio</string>
+    <string name="error_reproducir">No se pudo reproducir el audio</string>
+    <string name="exito_guardar">Audio guardado en tus grabaciones</string>
+
+    <!-- ===================== REPRODUCTOR ===================== -->
+    <string name="reproductor_titulo">Mis grabaciones</string>
+    <string name="reproductor_vacio">Aún no tienes grabaciones.\nVe a «Grabar audio» para crear la primera.</string>
+    <string name="reproductor_selecciona">Selecciona una grabación</string>
+    <string name="reproductor_tiempo_inicial">00:00 / 00:00</string>
+    <string name="tiempo_formato">%1$s / %2$s</string>
+    <string name="reproductor_detalle">%1$s · %2$s</string>
+    <string name="reproductor_nombre_item">Grabación %1$s</string>
+
+    <string name="cortar_titulo">Cortar audio</string>
+    <string name="cortar_mensaje">Elige el fragmento que quieres conservar.</string>
+    <string name="cortar_aplicar">Aplicar corte</string>
+    <string name="cortar_inicio">Inicio: %1$s</string>
+    <string name="cortar_fin">Fin: %1$s</string>
+    <string name="cortar_en_curso">Cortando audio…</string>
+    <string name="cortar_exito">Audio cortado correctamente</string>
+    <string name="error_cortar">No se pudo cortar el audio</string>
+    <string name="error_audio_corto">El audio es demasiado corto para cortarlo</string>
+    <string name="error_fragmento_corto">El fragmento debe durar al menos 1 segundo</string>
+
+    <string name="eliminar_titulo">Eliminar grabación</string>
+    <string name="eliminar_mensaje">¿Seguro que quieres eliminar «%1$s»? Esta acción no se puede deshacer.</string>
+    <string name="eliminar_exito">Grabación eliminada</string>
+    <string name="error_eliminar">No se pudo eliminar la grabación</string>
+
+    <!-- ===================== ACCESIBILIDAD ===================== -->
+    <string name="desc_logo">Logotipo de Registro Multimedia</string>
+    <string name="desc_avatar">Foto del integrante</string>
+    <string name="desc_estado_grabacion">Estado de la grabación</string>
+    <string name="desc_icono_audio">Grabación de audio</string>
+    <string name="desc_volver">Volver a la pantalla anterior</string>
+    <string name="desc_atajo">Abrir sección</string>
+
 </resources>

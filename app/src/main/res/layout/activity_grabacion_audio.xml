@@ -1,238 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Grabadora de notas de voz. Se abre desde el menú superior. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:background="?android:attr/colorBackground"
+    android:orientation="vertical"
+    tools:context=".GrabacionAudioActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarGrabacion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".MainActivity">
+        android:layout_height="?attr/actionBarSize"
+        app:navigationContentDescription="@string/desc_volver"
+        app:navigationIcon="@drawable/ic_atras"
+        app:title="@string/grabacion_titulo" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <LinearLayout
-            android:id="@+id/lyBar"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="#203A97"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/btnVolver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:src="@android:drawable/ic_menu_revert"
-                android:contentDescription="@string/volver"
-                android:clickable="true"
-                android:focusable="true" />
-
-            <TextView
-                android:id="@+id/txtTitulo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:text="@string/grabacion_audio"
-                android:textSize="18sp"
-                android:textColor="#FFFFFF" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imgbtnEstado"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="56dp"
-            android:scaleType="fitCenter"
-            android:padding="16dp"
-            android:src="@android:drawable/ic_btn_speak_now"
-            android:background="@drawable/circulo_fondo"
-            android:contentDescription="@string/estado_grabacion"
-            app:tint="#FFFFFF"
-            app:layout_constraintTop_toBottomOf="@id/lyBar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <TextView
-            android:id="@+id/txtTitulo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/listo_para_grabar"
-            android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@id/imgbtnEstado"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <TextView
-            android:id="@+id/txtSubtitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/toca_boton_comenzar"
-            android:textColor="#888888"
-            app:layout_constraintTop_toBottomOf="@id/txtTitulo2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/lyBotones"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:layout_marginTop="50dp"
-            app:layout_constraintTop_toBottomOf="@id/txtSubtitulo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <LinearLayout
-                android:id="@+id/lyGrabar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-
-                <ImageButton
-                    android:id="@+id/imgbtnGrabar"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/circulo_rojo"
-                    android:src="@drawable/circulo_blanco"
-                    android:padding="21dp"
-                    android:contentDescription="@string/grabar_audio" />
-
-                <TextView
-                    android:id="@+id/txtGrabar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/grabar" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lyDetener"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-
-                <ImageButton
-                    android:id="@+id/imgbtnDetener"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/circulo_gris"
-                    android:src="@drawable/cuadrado_gris"
-                    android:padding="21dp"
-                    android:contentDescription="@string/detener_grabacion" />
-
-                <TextView
-                    android:id="@+id/txtDetener"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/detener" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lyGuardar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-
-                <ImageButton
-                    android:id="@+id/imgbtnGuardar"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/circulo_gris"
-                    android:src="@android:drawable/ic_menu_save"
-                    android:contentDescription="@string/guardar_grabacion" />
-
-                <TextView
-                    android:id="@+id/txtGuardar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/guardar" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lyTodo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="24dp"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:background="@drawable/fondo_tarjeta"
-            android:padding="16dp"
-            app:layout_constraintTop_toBottomOf="@id/lyBotones"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:paddingStart="@dimen/esp_l"
+            android:paddingTop="@dimen/esp_xl"
+            android:paddingEnd="@dimen/esp_l"
+            android:paddingBottom="@dimen/esp_xl">
+
+            <!-- ============ ESTADO ============ -->
+            <ImageView
+                android:id="@+id/imgbtnEstado"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/bg_circulo_suave"
+                android:contentDescription="@string/desc_estado_grabacion"
+                android:padding="@dimen/esp_xxl"
+                android:src="@drawable/ic_microfono"
+                app:tint="?attr/colorOnPrimaryContainer" />
 
             <TextView
-                android:id="@+id/txtTitulo3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ultima_grabacion" />
-
-            <LinearLayout
-                android:id="@+id/lyReproductor"
+                android:id="@+id/txtEstado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:layout_marginTop="@dimen/esp_l"
+                android:text="@string/grabacion_listo"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.App.HeadlineSmall"
+                android:textColor="?attr/colorOnBackground" />
 
-                <ImageButton
-                    android:id="@+id/imgbtnReproducir"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/circulo_morado"
-                    android:src="@android:drawable/ic_media_play"
-                    android:contentDescription="@string/reproducir_audio" />
+            <TextView
+                android:id="@+id/txtEstadoDetalle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/esp_xs"
+                android:text="@string/grabacion_listo_detalle"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
 
-                <SeekBar
-                    android:id="@+id/seekReproductor"
+            <!-- ============ CONTROLES ============ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/esp_xxl"
+                android:orientation="horizontal">
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imgbtnGrabar"
+                        android:layout_width="@dimen/boton_circular_grande"
+                        android:layout_height="@dimen/boton_circular_grande"
+                        android:background="@drawable/bg_circulo_error"
+                        android:contentDescription="@string/accion_grabar"
+                        android:padding="@dimen/esp_xl"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_microfono"
+                        app:tint="?attr/colorOnError" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/esp_s"
+                        android:text="@string/accion_grabar"
+                        android:textAppearance="@style/TextAppearance.App.Overline"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imgbtnDetener"
+                        android:layout_width="@dimen/boton_circular_grande"
+                        android:layout_height="@dimen/boton_circular_grande"
+                        android:background="@drawable/bg_circulo_variante"
+                        android:contentDescription="@string/accion_detener"
+                        android:padding="@dimen/esp_xl"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_detener"
+                        app:tint="?attr/colorOnSurfaceVariant" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/esp_s"
+                        android:text="@string/accion_detener"
+                        android:textAppearance="@style/TextAppearance.App.Overline"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imgbtnGuardar"
+                        android:layout_width="@dimen/boton_circular_grande"
+                        android:layout_height="@dimen/boton_circular_grande"
+                        android:background="@drawable/bg_circulo_secundario"
+                        android:contentDescription="@string/accion_guardar"
+                        android:padding="@dimen/esp_xl"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_guardar"
+                        app:tint="?attr/colorOnSecondary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/esp_s"
+                        android:text="@string/accion_guardar"
+                        android:textAppearance="@style/TextAppearance.App.Overline"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/txtTiempo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
-                android:paddingBottom="12dp"
-                android:text="@string/tiempo_audio_inicial" />
-
-            <Button
-                android:id="@+id/btnReproducirAudio"
+            <!-- ============ ÚLTIMA GRABACIÓN ============ -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/reproducir_audio"
-                android:textColor="#000000"
-                app:backgroundTint="#D0D0D0" />
+                android:layout_marginTop="@dimen/esp_xxl"
+                app:cardCornerRadius="@dimen/radio_m">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/esp_l">
+
+                    <TextView
+                        style="@style/Texto.Etiqueta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/grabacion_ultima" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/esp_m"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imgbtnReproducir"
+                            android:layout_width="@dimen/boton_circular"
+                            android:layout_height="@dimen/boton_circular"
+                            android:background="@drawable/bg_circulo_primario"
+                            android:contentDescription="@string/accion_reproducir"
+                            android:padding="@dimen/esp_l"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_reproducir"
+                            app:tint="?attr/colorOnPrimary" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/esp_m"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <SeekBar
+                                android:id="@+id/seekReproductor"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:id="@+id/txtTiempo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/esp_m"
+                                android:paddingEnd="@dimen/esp_m"
+                                android:text="@string/reproductor_tiempo_inicial"
+                                android:textAppearance="@style/TextAppearance.App.Cronometro"
+                                android:textColor="?attr/colorOnSurfaceVariant" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnReproducirAudio"
+                        style="@style/Widget.App.Button.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/esp_m"
+                        android:text="@string/accion_reproducir"
+                        app:icon="@drawable/ic_reproducir"
+                        app:iconGravity="textStart" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-</ScrollView>
+</LinearLayout>

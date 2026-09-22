@@ -11,29 +11,57 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import java.util.Locale;
 
+/** Dibuja la lista de grabaciones guardadas. */
 public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHolder> {
 
     public interface OnAudioClickListener {
-        void onAudioClick(AudioItem item, int posicion);
+        void onAudioClick(@NonNull AudioItem item, int posicion);
     }
+
+    /** Ninguna fila seleccionada. */
+    public static final int SIN_SELECCION = -1;
 
     private final List<AudioItem> audios;
     private final OnAudioClickListener listener;
-    private int posicionSeleccionada = -1;
+    private int posicionSeleccionada = SIN_SELECCION;
 
-    public AudioAdapter(List<AudioItem> audios, OnAudioClickListener listener) {
+    public AudioAdapter(@NonNull List<AudioItem> audios, @NonNull OnAudioClickListener listener) {
         this.audios = audios;
         this.listener = listener;
     }
 
+    /**
+     * Cambia la fila resaltada y repinta solo las dos afectadas.
+     *
+     * <p>Antes se llamaba a {@code notifyItemChanged(-1)} al seleccionar la
+     * primera grabación, porque no se comprobaba que hubiera una selección
+     * anterior.</p>
+     */
     public void setPosicionSeleccionada(int posicion) {
-        this.posicionSeleccionada = posicion;
+        int anterior = posicionSeleccionada;
+        posicionSeleccionada = posicion;
+
+        if (anterior != SIN_SELECCION) {
+            notifyItemChanged(anterior);
+        }
+        if (posicion != SIN_SELECCION) {
+            notifyItemChanged(posicion);
+        }
+    }
+
+    /**
+     * Fija la fila resaltada sin notificar cambios.
+     *
+     * <p>Para usar junto a {@code notifyDataSetChanged()}, que ya repinta
+     * todas las filas.</p>
+     */
+    public void fijarSeleccion(int posicion) {
+        posicionSeleccionada = posicion;
     }
 
     @NonNull
     @Override
     public AudioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View vista = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_audio, parent, false);
 
@@ -42,37 +70,27 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.AudioViewHol
 
     @Override
     public void onBindViewHolder(@NonNull AudioViewHolder holder, int position) {
-
         AudioItem item = audios.get(position);
+        View fila = holder.itemView;
 
         holder.txtNombre.setText(item.getNombre());
-        holder.txtDetalle.setText(
-                item.getFecha() + "  •  " + formatoTiempo(item.getDuracionMs())
-        );
+        holder.txtDetalle.setText(fila.getContext().getString(
+                R.string.reproductor_detalle, item.getFecha(), formatoTiempo(item.getDuracionMs())));
 
-        boolean seleccionado = position == posicionSeleccionada;
+        // El resaltado se hace con el estado «activated» del selector del
+        // layout. Reemplazar el background en tiempo de ejecución, como se
+        // hacía antes, borraba el padding de las filas recicladas.
+        fila.setActivated(position == posicionSeleccionada);
 
-        holder.itemView.setBackgroundResource(
-                seleccionado
-                        ? R.drawable.fondo_item_seleccionado
-                        : R.drawable.fondo_item_normal
-        );
+        fila.setOnClickListener(v -> {
+            int posicionActual = holder.getBindingAdapterPosition();
 
-        holder.txtNombre.setTextColor(
-                seleccionado ? 0xFF203A97 : 0xFF000000
-        );
-
-        holder.itemView.setOnClickListener(v -> {
-
-            int posicionAnterior = posicionSeleccionada;
-            posicionSeleccionada = holder.getAdapterPosition();
-
-            notifyItemChanged(posicionAnterior);
-            notifyItemChanged(posicionSeleccionada);
-
-            if (listener != null) {
-                listener.onAudioClick(item, posicionSeleccionada);
+            if (posicionActual == RecyclerView.NO_POSITION) {
+                return;
             }
+
+            setPosicionSeleccionada(posicionActual);
+            listener.onAudioClick(audios.get(posicionActual), posicionActual);
         });
     }
 

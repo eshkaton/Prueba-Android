@@ -9,110 +9,85 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class IntegranteAdapter
-        extends RecyclerView.Adapter<IntegranteAdapter.ViewHolder> {
+/** Dibuja el listado de integrantes y abre la ficha al tocar una fila. */
+public class IntegranteAdapter extends RecyclerView.Adapter<IntegranteAdapter.ViewHolder> {
 
-    private ArrayList<Integrante> listaIntegrantes;
+    private final List<Integrante> integrantes = new ArrayList<>();
 
-    public IntegranteAdapter(ArrayList<Integrante> listaIntegrantes) {
-        this.listaIntegrantes = listaIntegrantes;
+    public IntegranteAdapter(@NonNull List<Integrante> integrantes) {
+        this.integrantes.addAll(integrantes);
     }
 
+    /** Sustituye el contenido de la lista (por ejemplo, tras agregar a alguien). */
+    public void actualizar(@NonNull List<Integrante> nuevos) {
+        integrantes.clear();
+        integrantes.addAll(nuevos);
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(
-            @NonNull ViewGroup parent,
-            int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View vista = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_integrante, parent, false);
 
-        View vista = LayoutInflater
-                .from(parent.getContext())
-                .inflate(
-                        R.layout.item_integrante,
-                        parent,
-                        false
-                );
         return new ViewHolder(vista);
     }
 
     @Override
-    public void onBindViewHolder(
-            @NonNull ViewHolder holder,
-            int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Integrante integrante = integrantes.get(position);
 
-        Integrante integrante =
-                listaIntegrantes.get(position);
-        holder.txtNombre.setText(
-                integrante.getNombre()
-        );
-        holder.txtRol.setText(
-                integrante.getRol()
-        );
-        holder.ratingBar.setRating(
-                integrante.getValoracion()
-        );
+        holder.txtNombre.setText(integrante.getNombre());
+        holder.txtRol.setText(integrante.getRol());
+        holder.ratingBar.setRating(integrante.getValoracion());
+
+        // Quien no tiene foto propia recibe el avatar genérico. Antes el
+        // constructor corto asignaba la foto de Lucas a todo el mundo.
         holder.imgFoto.setImageResource(
-                integrante.getFotoResId()
-        );
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = v.getContext();
-                Intent intent = new Intent(context, DetalleIntegranteActivity.class);
+                integrante.tieneFoto() ? integrante.getFotoResId() : R.drawable.ic_avatar_generico);
 
-
-                intent.putExtra("nombre_integrante", integrante.getNombre());
-                intent.putExtra("rol_integrante", integrante.getRol());
-                intent.putExtra("tecnologias_integrante", integrante.getTecnologias());
-                intent.putExtra("jornada_integrante", integrante.getJornada());
-                intent.putExtra("foto_integrante", integrante.getFotoResId());
-                intent.putExtra("valoracion_integrante", integrante.getValoracion());
-
-                context.startActivity(intent);
-            }
-        });
+        holder.itemView.setOnClickListener(v -> abrirDetalle(v.getContext(), integrante));
     }
 
     @Override
     public int getItemCount() {
-        return listaIntegrantes.size();
+        return integrantes.size();
     }
 
+    private void abrirDetalle(@NonNull Context contexto, @NonNull Integrante integrante) {
+        Intent intent = new Intent(contexto, DetalleIntegranteActivity.class);
 
+        intent.putExtra(DetalleIntegranteActivity.EXTRA_NOMBRE, integrante.getNombre());
+        intent.putExtra(DetalleIntegranteActivity.EXTRA_ROL, integrante.getRol());
+        intent.putExtra(DetalleIntegranteActivity.EXTRA_TECNOLOGIAS, integrante.getTecnologias());
+        intent.putExtra(DetalleIntegranteActivity.EXTRA_JORNADA, integrante.getJornada());
+        intent.putExtra(DetalleIntegranteActivity.EXTRA_FOTO, integrante.getFotoResId());
+        intent.putExtra(DetalleIntegranteActivity.EXTRA_VALORACION, integrante.getValoracion());
 
-    public static class ViewHolder
-            extends RecyclerView.ViewHolder {
-        TextView txtNombre;
-        TextView txtRol;
-        RatingBar ratingBar;
-        ImageView imgFoto;
+        contexto.startActivity(intent);
+    }
 
-        public ViewHolder(
-                @NonNull View itemView) {
+    static class ViewHolder extends RecyclerView.ViewHolder {
+
+        final TextView txtNombre;
+        final TextView txtRol;
+        final RatingBar ratingBar;
+        final ImageView imgFoto;
+
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtNombre =
-                    itemView.findViewById(
-                            R.id.tvNombre
-                    );
-            txtRol =
-                    itemView.findViewById(
-                            R.id.tvRol
-                    );
-            ratingBar =
-                    itemView.findViewById(
-                            R.id.ratingBar
-                    );
-            imgFoto =
-                    itemView.findViewById(
-                            R.id.imgFoto
-                    );
+            txtNombre = itemView.findViewById(R.id.tvNombre);
+            txtRol = itemView.findViewById(R.id.tvRol);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
+            imgFoto = itemView.findViewById(R.id.imgFoto);
         }
     }
 }

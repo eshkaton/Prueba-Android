@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Paleta "Aurora" — sistema de color único de Registro Multimedia.
+    Los tonos crudos viven aquí; los roles de Material 3 se asignan en themes.xml.
+    No uses estos nombres directamente en los layouts: usa ?attr/colorPrimary, etc.
+-->
 <resources>
-    <!-- Colores del sistema estándar -->
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
 
-    <!-- Colores personalizados de tu aplicación -->
-    <color name="primary_blue">#2563EB</color>
-    <color name="dark_blue">#17365D</color>
-    <color name="background_light">#F5F7FA</color>
-    <color name="text_dark">#111827</color>
-    <color name="text_gray">#6B7280</color>
-    <color name="text_muted">#9CA3AF</color>
+    <!-- Neutros absolutos -->
+    <color name="blanco">#FFFFFFFF</color>
+    <color name="negro">#FF000000</color>
+    <color name="transparente">#00000000</color>
+
+    <!-- Violeta Aurora (marca principal) -->
+    <color name="aurora_10">#FF1B0B3B</color>
+    <color name="aurora_20">#FF2E1563</color>
+    <color name="aurora_30">#FF44249B</color>
+    <color name="aurora_40">#FF5B3BD1</color>
+    <color name="aurora_50">#FF6D5BE7</color>
+    <color name="aurora_70">#FFA79AF3</color>
+    <color name="aurora_90">#FFE6E1FE</color>
+    <color name="aurora_95">#FFF3F0FF</color>
+
+    <!-- Turquesa (acción secundaria: audio, reproducción) -->
+    <color name="turquesa_20">#FF00382F</color>
+    <color name="turquesa_30">#FF00584A</color>
+    <color name="turquesa_40">#FF00897A</color>
+    <color name="turquesa_50">#FF00C2A8</color>
+    <color name="turquesa_70">#FF5FE3CE</color>
+    <color name="turquesa_90">#FFC9F6EE</color>
+
+    <!-- Coral (acento cálido: valoraciones, destacados) -->
+    <color name="coral_20">#FF4A1B00</color>
+    <color name="coral_30">#FF7A3000</color>
+    <color name="coral_40">#FFB85116</color>
+    <color name="coral_50">#FFFF8A4C</color>
+    <color name="coral_70">#FFFFB68C</color>
+    <color name="coral_90">#FFFFE3D3</color>
+
+    <!-- Rojo de error / grabación -->
+    <color name="rojo_20">#FF5C0014</color>
+    <color name="rojo_30">#FF8C1D2E</color>
+    <color name="rojo_40">#FFBA1A3A</color>
+    <color name="rojo_50">#FFE0405F</color>
+    <color name="rojo_90">#FFFFDAD9</color>
+
+    <!-- Neutros con matiz violeta (superficies y texto) -->
+    <color name="neutro_04">#FF0E0B14</color>
+    <color name="neutro_06">#FF15111D</color>
+    <color name="neutro_10">#FF1C1826</color>
+    <color name="neutro_16">#FF272233</color>
+    <color name="neutro_20">#FF302B3D</color>
+    <color name="neutro_30">#FF494356</color>
+    <color name="neutro_50">#FF787289</color>
+    <color name="neutro_60">#FF938DA3</color>
+    <color name="neutro_80">#FFC9C4D6</color>
+    <color name="neutro_90">#FFE6E1F0</color>
+    <color name="neutro_94">#FFF0EDF7</color>
+    <color name="neutro_97">#FFF8F6FC</color>
+    <color name="neutro_99">#FFFDFBFF</color>
+
+    <!-- Blancos translúcidos para la pantalla de acceso -->
+    <color name="blanco_08">#14FFFFFF</color>
+    <color name="blanco_16">#29FFFFFF</color>
+    <color name="blanco_24">#3DFFFFFF</color>
+    <color name="blanco_60">#99FFFFFF</color>
+    <color name="blanco_80">#CCFFFFFF</color>
+
+    <!-- Degradados de la pantalla de acceso -->
+    <color name="degradado_inicio">#FF2E1563</color>
+    <color name="degradado_centro">#FF5B3BD1</color>
+    <color name="degradado_fin">#FF00897A</color>
+
 </resources>

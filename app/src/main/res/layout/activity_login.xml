@@ -1,154 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    Primera pantalla del flujo: acceso.
+    El degradado de fondo lo aporta Theme.Registromultimedia.Acceso, por eso
+    aquí no se declara ningún color de fondo.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121D42"
-    android:padding="24dp"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:scrollbars="none"
     tools:context=".LoginActivity">
 
-    <!-- Icono superior (Grupos) -->
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/ic_groups"
-        app:tint="#FFFFFF"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Título principal -->
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Registro Multimedia\nde Equipo"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/imgLogo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Subtítulo -->
-    <TextView
-        android:id="@+id/txtSubtitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Gestiona la información de tu equipo, comparte tus preferencias y graba tu presentación de voz."
-        android:textAlignment="center"
-        android:textColor="#C7D2FE"
-        android:textSize="13sp"
-        app:layout_constraintTop_toBottomOf="@id/txtTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Campo Usuario -->
-    <EditText
-        android:id="@+id/editUser"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bg_rounded_input"
-        android:drawableStart="@drawable/ic_person"
-        android:drawablePadding="12dp"
-        android:hint="Usuario"
-        android:inputType="text"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:textColor="#000000"
-        android:textColorHint="#9CA3AF"
-        app:layout_constraintTop_toBottomOf="@id/txtSubtitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Campo Contraseña -->
-    <EditText
-        android:id="@+id/editPassword"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/bg_rounded_input"
-        android:drawableStart="@drawable/ic_lock"
-        android:drawablePadding="12dp"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:textColor="#000000"
-        android:textColorHint="#9CA3AF"
-        app:layout_constraintTop_toBottomOf="@id/editUser"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Botón Iniciar Sesión -->
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#3B82F6"
-        android:text="Iniciar Sesión"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:cornerRadius="26dp"
-        app:layout_constraintTop_toBottomOf="@id/editPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Botón Registrarse (Contorno Blanco) -->
-    <Button
-        android:id="@+id/btnRegister"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="12dp"
-        android:text="Registrarse"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:cornerRadius="26dp"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="1.5dp"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Pie de página -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/esp_xl"
+        android:paddingTop="@dimen/esp_xxxl"
+        android:paddingEnd="@dimen/esp_xl"
+        android:paddingBottom="@dimen/esp_xl">
+
+        <!-- Marca -->
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:background="@drawable/bg_circulo_translucido"
+            android:contentDescription="@string/desc_logo"
+            android:padding="@dimen/esp_xl"
+            android:src="@drawable/ic_microfono"
+            app:tint="@color/blanco" />
 
         <TextView
+            android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿No tienes una cuenta? "
-            android:textColor="#9CA3AF"
-            android:textSize="12sp" />
+            android:layout_marginTop="@dimen/esp_xl"
+            android:text="@string/acceso_titulo"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.App.DisplaySmall"
+            android:textColor="@color/blanco" />
 
         <TextView
-            android:id="@+id/txtGoRegister"
+            android:id="@+id/txtLema"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_s"
+            android:text="@string/acceso_lema"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+            android:textColor="@color/blanco_80" />
+
+        <!-- Credenciales -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUsuario"
+            style="@style/Widget.App.TextInputLayout.Acceso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_xxl"
+            android:hint="@string/acceso_usuario"
+            app:startIconDrawable="@drawable/ic_persona">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="username"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPassword"
+            style="@style/Widget.App.TextInputLayout.Acceso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_m"
+            android:hint="@string/acceso_password"
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_candado">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txtPistaDemo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registrate"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="@dimen/esp_m"
+            android:background="@drawable/bg_pildora_translucida"
+            android:paddingStart="@dimen/esp_m"
+            android:paddingTop="@dimen/esp_xs"
+            android:paddingEnd="@dimen/esp_m"
+            android:paddingBottom="@dimen/esp_xs"
+            android:text="@string/acceso_pista_demo"
+            android:textAppearance="@style/TextAppearance.App.Overline"
+            android:textColor="@color/blanco_80" />
+
+        <!-- Acciones -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogin"
+            style="@style/Widget.App.Button.Acceso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_xl"
+            android:text="@string/acceso_entrar"
+            app:icon="@drawable/ic_salir"
+            app:iconGravity="textStart" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegister"
+            style="@style/Widget.App.Button.AccesoOutlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_m"
+            android:text="@string/acceso_crear_cuenta"
+            app:icon="@drawable/ic_agregar_persona"
+            app:iconGravity="textStart"
+            app:iconTint="@color/blanco" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Pie -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/esp_xl"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/acceso_sin_cuenta"
+                android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                android:textColor="@color/blanco_60" />
+
+            <TextView
+                android:id="@+id/txtGoRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="@dimen/esp_xs"
+                android:paddingTop="@dimen/esp_s"
+                android:paddingEnd="@dimen/esp_xs"
+                android:paddingBottom="@dimen/esp_s"
+                android:text="@string/acceso_registrate"
+                android:textAppearance="@style/TextAppearance.App.LabelLarge"
+                android:textColor="@color/blanco" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

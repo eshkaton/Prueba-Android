@@ -1,47 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    Fila de la biblioteca de grabaciones. El fondo es un selector que
+    reacciona a setActivated(), así el adaptador no toca el background.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/esp_s"
+    android:background="@drawable/bg_item_audio"
+    android:clickable="true"
+    android:focusable="true"
     android:gravity="center_vertical"
-    android:padding="14dp"
-    android:background="@drawable/fondo_item_normal">
+    android:orientation="horizontal"
+    android:padding="@dimen/esp_m">
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/circulo_fondo"
-        android:padding="9dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_circulo_suave"
+        android:contentDescription="@string/desc_icono_audio"
+        android:padding="@dimen/esp_m"
         android:src="@drawable/ic_nota_musical"
-        android:contentDescription="@string/audio" />
+        app:tint="?attr/colorOnPrimaryContainer" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/esp_m"
         android:layout_weight="1"
-        android:layout_marginStart="14dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/txtNombreAudio"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="@string/grabacion" />
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.App.TitleMedium"
+            android:textColor="?attr/colorOnSurface"
+            tools:text="Grabación 22/09/2026 15:12" />
 
         <TextView
             android:id="@+id/txtDetalleAudio"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:textSize="13sp"
-            android:textColor="#888888"
-            android:text="@string/tiempo_cero" />
+            android:textAppearance="@style/TextAppearance.App.BodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:text="22/09/2026 15:12 · 00:42" />
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="@dimen/icono_m"
+        android:layout_height="@dimen/icono_m"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_ondas"
+        app:tint="?attr/colorOutline" />
 
 </LinearLayout>

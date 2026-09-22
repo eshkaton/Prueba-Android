@@ -1,7 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!--
+        Tema oscuro. Solo se redefinen los roles de color: la tipografía, las
+        formas y los estilos de componente se heredan del tema claro.
+    -->
     <style name="Base.Theme.Registromultimedia" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+        <item name="colorPrimary">@color/aurora_70</item>
+        <item name="colorOnPrimary">@color/aurora_20</item>
+        <item name="colorPrimaryContainer">@color/aurora_30</item>
+        <item name="colorOnPrimaryContainer">@color/aurora_90</item>
+
+        <item name="colorSecondary">@color/turquesa_70</item>
+        <item name="colorOnSecondary">@color/turquesa_20</item>
+        <item name="colorSecondaryContainer">@color/turquesa_30</item>
+        <item name="colorOnSecondaryContainer">@color/turquesa_90</item>
+
+        <item name="colorTertiary">@color/coral_70</item>
+        <item name="colorOnTertiary">@color/coral_20</item>
+        <item name="colorTertiaryContainer">@color/coral_30</item>
+        <item name="colorOnTertiaryContainer">@color/coral_90</item>
+
+        <item name="colorError">@color/rojo_50</item>
+        <item name="colorOnError">@color/rojo_20</item>
+        <item name="colorErrorContainer">@color/rojo_30</item>
+        <item name="colorOnErrorContainer">@color/rojo_90</item>
+
+        <item name="android:colorBackground">@color/neutro_04</item>
+        <item name="colorOnBackground">@color/neutro_90</item>
+        <item name="colorSurface">@color/neutro_06</item>
+        <item name="colorOnSurface">@color/neutro_90</item>
+        <item name="colorSurfaceVariant">@color/neutro_16</item>
+        <item name="colorOnSurfaceVariant">@color/neutro_80</item>
+        <item name="colorSurfaceContainer">@color/neutro_16</item>
+        <item name="colorSurfaceContainerHigh">@color/neutro_20</item>
+        <item name="colorOutline">@color/neutro_50</item>
+        <item name="colorOutlineVariant">@color/neutro_30</item>
+
+        <item name="android:statusBarColor">@color/neutro_04</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="android:windowLightNavigationBar">false</item>
+
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.App.DisplaySmall</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.App.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.App.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.App.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.App.TitleMedium</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.App.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.App.BodyMedium</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.App.LabelLarge</item>
+        <item name="android:fontFamily">@string/fuente_cuerpo</item>
+
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.App.Button.Outlined</item>
+        <item name="borderlessButtonStyle">@style/Widget.App.Button.Text</item>
+        <item name="materialCardViewStyle">@style/Widget.App.Card</item>
+        <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
+        <item name="checkboxStyle">@style/Widget.App.CheckBox</item>
+        <item name="radioButtonStyle">@style/Widget.App.RadioButton</item>
+        <item name="toolbarStyle">@style/Widget.App.Toolbar</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigation</item>
+        <item name="floatingActionButtonStyle">@style/Widget.App.Fab</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.AlertDialog</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.Large</item>
     </style>
+
 </resources>

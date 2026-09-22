@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Permiso obligatorio para el micrófono -->
+    <!-- Necesario para la grabadora de notas de voz. -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- La app funciona sin micrófono: solo se pierde la grabación. -->
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -15,36 +19,51 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Registromultimedia">
 
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-
-        <!-- LoginActivity es la primera pantalla que se abre -->
+        <!-- 1. Acceso: primera pantalla del flujo. -->
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Registromultimedia.Acceso"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- MainActivity se abre después de iniciar sesión correctamente -->
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <!-- Pantalla para grabar audio -->
-        <activity
-            android:name=".activity_grabacion_audio"
-            android:exported="false" />
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:label="@string/registro_titulo"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/Theme.Registromultimedia.Acceso"
+            android:windowSoftInputMode="adjustResize" />
 
-        <!-- Pantalla para reproducir audio -->
+        <!-- 2. Bienvenida: hospeda el resto de vistas con su barra de menú. -->
         <activity
-            android:name=".activity_reproductor_audio"
-            android:exported="false" />
-        <activity 
+            android:name=".WelcomeActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- 3. Vistas que se abren desde la bienvenida. -->
+        <activity
             android:name=".DetalleIntegranteActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/detalle_titulo"
+            android:parentActivityName=".WelcomeActivity" />
+
+        <activity
+            android:name=".GrabacionAudioActivity"
+            android:exported="false"
+            android:label="@string/grabacion_titulo"
+            android:parentActivityName=".WelcomeActivity" />
+
+        <activity
+            android:name=".ReproductorAudioActivity"
+            android:exported="false"
+            android:label="@string/reproductor_titulo"
+            android:parentActivityName=".WelcomeActivity" />
 
     </application>
 
