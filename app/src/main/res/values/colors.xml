@@ -1,37 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <!-- Colores del sistema estándar -->
-        <color name="black">#FF000000</color>
-        <color name="white">#FFFFFFFF</color>
+            <!-- Colores del sistema estándar -->
+            <color name="black">#FF000000</color>
+            <color name="white">#FFFFFFFF</color>
 
-        <!-- ============================================================ -->
-        <!-- IDENTIDAD VISUAL — Registro Multimedia (rediseño Grupo 7)     -->
-        <!-- Paleta: "tinta y ámbar" — deja el azul Material por defecto   -->
-        <!-- ============================================================ -->
-
-        <!-- Primario: tinta petróleo profunda (toolbar, headers, textos fuertes) -->
-        <color name="brand_primary">#0E3B3E</color>
-        <color name="brand_primary_dark">#082526</color>
-        <color name="brand_primary_light">#1C5C60</color>
-
-        <!-- Acento: ámbar coral (botones de acción, foco, progreso) -->
-        <color name="brand_accent">#FF6B4A</color>
-        <color name="brand_accent_dark">#E0563A</color>
-
-        <!-- Fondo cálido, no blanco frío ni gris azulado genérico -->
-        <color name="brand_background">#F7F4EF</color>
-        <color name="brand_surface">#FFFFFF</color>
-
-        <!-- Texto -->
-        <color name="brand_text">#1A1A1A</color>
-        <color name="brand_text_muted">#6E6E6E</color>
-        <color name="brand_on_primary">#FFFFFF</color>
-
-        <!-- Compatibilidad: nombres antiguos, ahora apuntan a la paleta nueva -->
-        <color name="primary_blue">#FF6B4A</color>
-        <color name="dark_blue">#0E3B3E</color>
-        <color name="background_light">#F7F4EF</color>
-        <color name="text_dark">#1A1A1A</color>
-        <color name="text_gray">#6E6E6E</color>
-        <color name="text_muted">#9CA3AF</color>
+            <!-- Colores personalizados de tu aplicación -->
+            <color name="primary_blue">#2563EB</color>
+            <color name="dark_blue">#17365D</color>
+            <color name="background_light">#F5F7FA</color>
+            <color name="text_dark">#111827</color>
+            <color name="text_gray">#6B7280</color>
+            <color name="text_muted">#9CA3AF</color>
 </resources>
