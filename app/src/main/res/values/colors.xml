@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-            <!-- Colores del sistema estándar -->
-            <color name="black">#FF000000</color>
-            <color name="white">#FFFFFFFF</color>
+    <!-- Colores del sistema estándar -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 
-            <!-- Colores personalizados de tu aplicación -->
-            <color name="primary_blue">#2563EB</color>
-            <color name="dark_blue">#17365D</color>
-            <color name="background_light">#F5F7FA</color>
-            <color name="text_dark">#111827</color>
-            <color name="text_gray">#6B7280</color>
-            <color name="text_muted">#9CA3AF</color>
+    <!-- Colores personalizados de tu aplicación -->
+    <color name="primary_blue">#2563EB</color>
+    <color name="dark_blue">#17365D</color>
+    <color name="background_light">#F5F7FA</color>
+    <color name="text_dark">#111827</color>
+    <color name="text_gray">#6B7280</color>
+    <color name="text_muted">#9CA3AF</color>
 </resources>
