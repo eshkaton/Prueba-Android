@@ -1,197 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity_reproductor_audio">
-
-    <LinearLayout
-        android:id="@+id/lyBarPlayer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:background="#203A97"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/btnVolverGrabadora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_flecha_atras"
-            android:contentDescription="@string/volver_grabacion"
-            android:clickable="true"
-            android:focusable="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:text="@string/reproduccion_audio"
-            android:textSize="18sp"
-            android:textColor="#FFFFFF" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/txtSinAudios"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:text="@string/sin_audios_guardados"
-        android:textColor="#888888"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/lyBarPlayer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAudios"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="16dp"
-        android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/lyBarPlayer"
-        app:layout_constraintBottom_toTopOf="@id/lyReproductorActual"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/lyReproductorActual"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/fondo_tarjeta"
-        android:padding="16dp"
-        android:layout_margin="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:id="@+id/txtNombreSeleccionado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="@string/selecciona_audio" />
-
-        <TextView
-            android:id="@+id/txtFechaSeleccionado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textColor="#888888" />
-
-        <SeekBar
-            android:id="@+id/seekPlayer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:enabled="false" />
-
-        <TextView
-            android:id="@+id/txtTiempoPlayer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tiempo_audio_inicial" />
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity_reproductor_audio">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:weightSum="3">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-
-                <ImageButton
-                    android:id="@+id/imgbtnCortar"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/circulo_gris"
-                    android:src="@drawable/ic_cortar"
-                    android:padding="14dp"
-                    android:enabled="false"
-                    android:contentDescription="@string/cortar_audio" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/lyBarPlayer"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/cortar" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="#0E3B3E"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </LinearLayout>
+                    <ImageView
+                                    android:id="@+id/btnVolverGrabadora"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:src="@drawable/ic_flecha_atras"
+                                    android:contentDescription="@string/volver_grabacion"
+                                    android:clickable="true"
+                                    android:focusable="true" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-
-                <ImageButton
-                    android:id="@+id/imgbtnPlayPausePlayer"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/circulo_morado"
-                    android:src="@android:drawable/ic_media_play"
-                    android:padding="18dp"
-                    android:enabled="false"
-                    android:contentDescription="@string/reproducir_pausar" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/reproducir" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-
-                <ImageButton
-                    android:id="@+id/imgbtnEliminar"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/circulo_rojo"
-                    android:src="@drawable/ic_eliminar"
-                    android:padding="14dp"
-                    android:enabled="false"
-                    android:contentDescription="@string/eliminar_audio" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/eliminar" />
-
-            </LinearLayout>
+                    <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="18dp"
+                                    android:text="@string/reproduccion_audio"
+                                    android:textSize="18sp"
+                                    android:textColor="#FFFFFF" />
 
         </LinearLayout>
 
-    </LinearLayout>
+        <TextView
+                    android:id="@+id/txtSinAudios"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
+                    android:text="@string/sin_audios_guardados"
+                    android:textColor="#888888"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/lyBarPlayer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAudios"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="16dp"
+                    android:clipToPadding="false"
+                    app:layout_constraintTop_toBottomOf="@id/lyBarPlayer"
+                    app:layout_constraintBottom_toTopOf="@id/lyReproductorActual"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+                    android:id="@+id/lyReproductorActual"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/fondo_tarjeta"
+                    android:padding="16dp"
+                    android:layout_margin="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                                    android:id="@+id/txtNombreSeleccionado"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:text="@string/selecciona_audio" />
+
+                    <TextView
+                                    android:id="@+id/txtFechaSeleccionado"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:textColor="#888888" />
+
+                    <SeekBar
+                                    android:id="@+id/seekPlayer"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:enabled="false" />
+
+                    <TextView
+                                    android:id="@+id/txtTiempoPlayer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/tiempo_audio_inicial" />
+
+                    <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:orientation="horizontal"
+                                    android:gravity="center"
+                                    android:weightSum="3">
+
+                                    <LinearLayout
+                                                        android:layout_width="0dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:gravity="center_horizontal">
+
+                                                        <ImageButton
+                                                                                android:id="@+id/imgbtnCortar"
+                                                                                android:layout_width="56dp"
+                                                                                android:layout_height="56dp"
+                                                                                android:background="@drawable/circulo_gris"
+                                                                                android:src="@drawable/ic_cortar"
+                                                                                android:padding="14dp"
+                                                                                android:enabled="false"
+                                                                                android:contentDescription="@string/cortar_audio" />
+
+                                                        <TextView
+                                                                                android:layout_width="wrap_content"
+                                                                                android:layout_height="wrap_content"
+                                                                                android:layout_marginTop="4dp"
+                                                                                android:text="@string/cortar" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                                        android:layout_width="0dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:gravity="center_horizontal">
+
+                                                        <ImageButton
+                                                                                android:id="@+id/imgbtnPlayPausePlayer"
+                                                                                android:layout_width="70dp"
+                                                                                android:layout_height="70dp"
+                                                                                android:background="@drawable/circulo_morado"
+                                                                                android:src="@android:drawable/ic_media_play"
+                                                                                android:padding="18dp"
+                                                                                android:enabled="false"
+                                                                                android:contentDescription="@string/reproducir_pausar" />
+
+                                                        <TextView
+                                                                                android:layout_width="wrap_content"
+                                                                                android:layout_height="wrap_content"
+                                                                                android:layout_marginTop="4dp"
+                                                                                android:text="@string/reproducir" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                                        android:layout_width="0dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:orientation="vertical"
+                                                        android:gravity="center_horizontal">
+
+                                                        <ImageButton
+                                                                                android:id="@+id/imgbtnEliminar"
+                                                                                android:layout_width="56dp"
+                                                                                android:layout_height="56dp"
+                                                                                android:background="@drawable/circulo_rojo"
+                                                                                android:src="@drawable/ic_eliminar"
+                                                                                android:padding="14dp"
+                                                                                android:enabled="false"
+                                                                                android:contentDescription="@string/eliminar_audio" />
+
+                                                        <TextView
+                                                                                android:layout_width="wrap_content"
+                                                                                android:layout_height="wrap_content"
+                                                                                android:layout_marginTop="4dp"
+                                                                                android:text="@string/eliminar" />
+
+                                    </LinearLayout>
+
+                    </LinearLayout>
+
+        </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
