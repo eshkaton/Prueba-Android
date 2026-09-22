@@ -1,40 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <item
-                    android:id="@+id/menu_inicio"
-                    android:icon="@android:drawable/ic_menu_view"
-                    android:title="Inicio"
-                    android:checkable="true" />
+            <item
+                            android:id="@+id/menu_formulario"
+                            android:title="Formulario" />
 
-        <item
-                    android:id="@+id/menu_agregar_integrante"
-                    android:icon="@android:drawable/ic_menu_add"
-                    android:title="Agregar integrante"
-                    android:checkable="true" />
+            <item
+                            android:id="@+id/menu_grabar_audio"
+                            android:title="Grabar audio" />
 
-        <item
-                    android:id="@+id/menu_lista_integrantes"
-                    android:icon="@android:drawable/ic_menu_agenda"
-                    android:title="Lista de integrantes"
-                    android:checkable="true" />
+            <item
+                            android:id="@+id/menu_reproducir_audio"
+                            android:title="Reproducir audio" />
 
-        <item
-                    android:id="@+id/menu_grabar_audio"
-                    android:icon="@android:drawable/ic_btn_speak_now"
-                    android:title="Grabar audio"
-                    android:checkable="true" />
-
-        <item
-                    android:id="@+id/menu_reproducir_audio"
-                    android:icon="@android:drawable/ic_media_play"
-                    android:title="Reproducir audio"
-                    android:checkable="true" />
-
-        <item
-                    android:id="@+id/menu_cerrar_sesion"
-                    android:icon="@android:drawable/ic_lock_power_off"
-                    android:title="Cerrar sesión"
-                    android:checkable="false" />
+            <item
+                            android:id="@+id/menu_cerrar_sesion"
+                            android:title="Cerrar sesión" />
 
 </menu>
